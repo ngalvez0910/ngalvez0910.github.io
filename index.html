@@ -1,11 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Ngalvez0910</title>
-  </head>
-  <body>
-    <h1>Página de ngalvez0910</h1>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siempre Activos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script language="javascript" type="text/javascript" src="js/siempreActivos.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <img src="imgs/logo.png" alt="Logo">
+        <h1 class="IBM Plex Mono">Siempre Activos</h1>
+    </div>
+
+    <div class="navbar" id="navbar">
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <a href="#navbar">Inicio</a>
+        <a href="#informacion">Información</a>
+        <a href="#saludos">Saluda</a>
+        <a href="#programa">Programa</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+    
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="imgs/slider1.jpg">
+        </div>
+        <div class="mySlides fade">
+          <img src="imgs/slider2.jpg">
+        </div>
+        <div class="mySlides fade">
+          <img src="imgs/slider3.jpg">
+        </div>
+        <div class="mySlides fade">
+          <img src="imgs/slider4.jpg">
+        </div>
+        
+        <button class="prev" onclick="plusSlides(-1)">&#9664;</button>
+        <button class="next" onclick="plusSlides(1)">&#9654;</button>
+    </div>
+
+    <div class="content">
+        <div class="column">
+            <h2 id="informacion">Las actividades son gratuitas</h2>
+            <p>Pueden ser usuarios los vecinos que figuren
+                inscritos en el padrón municipal mayores de
+                65 años, pensionistas o jubilados totales o
+                parciales mayores de 55 años y sus cónyuges de más de 55 años. </p>
+            <h2>Fechas y lugares para nuevas inscripciones</h2>
+            <p>Horario de 10 a 14 h.
+                <ul>
+                    <li>Centro de Mayores de Gutiérrez Soto: del 4 al 8 de septiembre.</li>
+                    C/ Gutiérrez Soto, 8, telf. 91 343 2090
+                </ul>
+                <ul>
+                    <li>Centro de Mayores de Vera: del 11 al 15 de septiembre.</li>
+                    C/ José Antonio, 42, telf. 91 634 9300<br>
+                    ext. 2460
+                </ul>
+                <span>
+                Más información:
+                En los teléfonos arriba indicados y en el
+                mail activmayores@aytoboadilla.com
+                </span>
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="column">
+            <h2>Nuevas actividades</h2>
+            <p>Nuevos cursos y grupos de conversación en inglés.
+                <ul>
+                    <li>Ampliación de horarios de las actividades de yoga y taichi.</li>
+                    <li>Nuevas actividades en las urbanizaciones históricas.</li>
+                    <li>Escuela de Abuelos.</li>
+                    <li>Visitas guiadas Madrid Cultural.</li>
+                    <li>Taller de mejora de los hábitos de sueño.</li>
+                    <li>Día de San Valentín.</li>
+                    <li>Talleres: Decora la Navidad y Decora la Feria de Abril.</li>
+                    <li>Curso de creación y edición de documentos de word.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="saludos">
+        <h2 id="saludos">Saludos del Alcalde</h2>
+        <img src="imgs/alcalde.jpg" alt="Alcalde">
+        <p>Queridos vecinos:<br>
+            Igual que vuestros nietos, iniciáis el curso con ganas de
+            reencontraros con vuestros
+            compañeros, con mucha
+            ilusión por aprender tras el
+            descanso de las vacaciones
+            y con nuevas expectativas
+            sobre lo que os deparará el
+            nuevo año.<br>
+            En realidad lo que estáis haciendo es renovar vuestras vidas con actividades que os enriquecen y con nuevos
+            focos de interés que compartís con vuestros conocidos y amigos.<br>
+            Es lo que ha sido llamado “el envejecimiento activo”
+            que todos (médicos, terapeutas y psicólogos) os recomiendan como garantía de salud física y psíquica:
+            vivir más intensamente aprovechando cada momento
+            para seguir mejorando y aprendiendo.<br>
+            Nuestro lema “Siempre Activos” se apoya en este idea
+            y por eso pido vuestra implicación en las distintas actividades de ocio, deportivas y formativas que os proponemos.<br>
+            Junto a nuestra oferta habitual, fruto de vuestras peticiones este curso tenemos novedades como la creación de nuevos grupos de conversación en inglés, la
+            ampliación horaria de las actividades de yoga y taichi,
+            talleres de decoración, visitas guiadas por Madrid, un
+            taller para mejorar los hábitos de sueño o una Escuela de Abuelos, entre otras.<br>
+            Todas las actividades son gratuitas y complementarias de las que organiza la Asociación de Mayores de
+            Boadilla a través de la subvención que anualmente
+            les concedemos, tanto para ellas como para el Abono
+            Transporte de los mayores.<br>
+            Para concluir quiero solicitar especialmente la participación de todos aquellos que aún no están inscritos.
+            Os ánimo a hacerlo y os aseguro que no os arrepentiréis.
+            ¡Mucho ánimo, y a por el nuevo curso!</p><br>
+            <span>D. Antonio González Terol, Alcalde de Boadilla del Monte</span>
+    </div>
+
+    <h2 id="programa">Programa</h2><br>
+    <div class="tablas">
+        <div class="tabla1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talleres</th>
+                        <th>Días</th>
+                        <th>Horario</th>
+                        <th>Centro</th>
+                        <th>Horas semana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GIMNASIA AERÓBICA 1</td>
+                        <td>L/X</td>
+                        <td>9:00-10:00</td>
+                        <td>María de Vera</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>GIMNASIA AERÓBICA 2</td>
+                        <td>L/X</td>
+                        <td>10:00-11:00</td>
+                        <td>María de Vera</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>GIMNASIA AERÓBICA 3</td>
+                        <td>M/J</td>
+                        <td>9:00-10:00</td>
+                        <td>C\ Gutiérrez Soto</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>GIMNASIA AERÓBICA 4</td>
+                        <td>M/J</td>
+                        <td>11:00-12:00</td>
+                        <td>C\ Gutiérrez Soto</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tabla2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talleres</th>
+                        <th>Días</th>
+                        <th>Horario</th>
+                        <th>Centro</th>
+                        <th>Horas semana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BAILE 1 (INDIVIDUAL)</td>
+                        <td>L</td>
+                        <td>17:00-18:00</td>
+                        <td>María de Vera</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>BAILE 2 (PAREJAS)</td>
+                        <td>L</td>
+                        <td>18:00-19:00</td>
+                        <td>María de Vera</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>BAILE 3 (INDIVIDUAL)</td>
+                        <td>L</td>
+                        <td>19:00-20:00</td>
+                        <td>María de Vera</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>BAILE 4 (INDIVIDUAL)</td>
+                        <td>M</td>
+                        <td>17:00-18:00</td>
+                        <td>C\ Gutiérrez Soto</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="contacto">
+        <h2 id="contacto">Contacto</h2><br>
+        <form>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escriba su nombre">
+
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Escriba sus apellidos">
+
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Escriba su teléfono">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Escriba su email">
+
+            <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+    </div>
+    
+    <div class="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8w8OPmprCdA?si=Jnv03Mdx3dWCk4XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">
+            <p>Concejalía de Mayores</p>
+            <p>Plaza de la Villa s/n</p>
+            <p>teléfono (91) 6329410</p>
+            <p><a href="mailto:mayores@aytoboadilla.com">mayores@aytoboadilla.com</a></p>
+        </div>
+        <div class="footer-logo">
+            <img src="imgs/logo.png" alt="Logo">
+        </div>
+    </div>
+
+</body>
 </html>
