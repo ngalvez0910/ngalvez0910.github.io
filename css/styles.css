@@ -44,23 +44,15 @@ ul li {
     width: 50px;
     margin: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
-    border-radius: 8px;
-}
-.technologies img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
 .contact a {
     margin: 0 10px;
     transition: transform 0.2s;
+    border-radius: 8px;
 }
 .contact a:hover {
-    transform: scale(1.2);
-}
-.icon {
-    width: 35px;
-    height: auto;
-    filter: brightness(0) invert(1);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
 .foto{
     width: 100%;
