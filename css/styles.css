@@ -72,11 +72,19 @@ ul li {
     justify-content: center;
     margin-top: 2em;
 }
+.projects a {
+    margin: 0 10px;
+    transition: transform 0.2s;
+    border-radius: 8px;
+}
 .projects img {
     width: 100%;
     max-width: 5em;
-    margin: 0 5px;
     justify-content: space-between;
+}
+.projects a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
 .contact{
     margin-bottom: 2em;
