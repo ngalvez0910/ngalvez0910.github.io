@@ -102,3 +102,22 @@ ul li {
     width: 100%;
     max-width: 3em;
 }
+@media screen and (max-width: 37.5em) { 
+    .otros { 
+        width: 100%; 
+        max-width: 100%; 
+        display: block; 
+        overflow-x: auto; 
+    } 
+    .izquierda, .proyectos, .contact { 
+        width: 100%; 
+        max-width: 100%; 
+        display: block; 
+    } 
+    .tecnologias{
+        margin-bottom: 2em;
+    }
+    .projects a {
+        margin-bottom: 3em;
+    }
+}
