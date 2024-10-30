@@ -45,6 +45,9 @@ ul li {
     margin: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
+.contact{
+    margin-bottom: 2em;
+}
 .contact a {
     margin: 0 10px;
     transition: transform 0.2s;
