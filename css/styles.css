@@ -40,10 +40,43 @@ ul li {
     color: #d5b6e0;
     margin: 5px 0;
 }
-.technologies img {
+.otros {
+    display: flex;
+    justify-content: space-between;
+}
+.izquierda, .proyectos {
+    width: 50%;
+}
+.izquierda {
+    display: flex;
+    flex-direction: column;
+}
+.section-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.foto {
     width: 50px;
     margin: 10px;
     transition: transform 0.2s, box-shadow 0.2s;
+}
+.proyectos {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid #b35bd6;
+    border-radius: 8px;
+    background-color: #2b2a3d;
+}
+.projects {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+.projects img {
+    width: 100%;
+    max-width: 5em;
+    margin: 0 5px;
+    justify-content: space-between;
 }
 .contact{
     margin-bottom: 2em;
