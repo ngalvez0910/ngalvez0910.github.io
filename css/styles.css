@@ -1,123 +1,252 @@
+/* Estilos generales */
 .cuerpo {
     font-family: 'Arial', sans-serif;
-    background-color: #1c1b29;
-    color: #f3e6f5;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
+
 #banner {
     margin: 20px auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    overflow: hidden;
 }
+
 h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #d26ac2;
-    margin: 20px 0;
 }
-.introduction {
-    display: flex;
-    align-items: center;
-    margin: 20px 0;
-    color: #f3e6f5;
-}
+
 #octocat {
     width: 100%;
     max-width: 10em;
 }
+
 .section-title {
     font-size: 1.8rem;
-    color: #b35bd6;
     font-weight: 600;
     margin: 30px 0 15px;
 }
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-ul li {
-    font-size: 1.1rem;
-    color: #d5b6e0;
-    margin: 5px 0;
-}
-.otros {
-    display: flex;
-    justify-content: space-between;
-}
+
 .izquierda, .proyectos {
     width: 50%;
 }
+
 .izquierda {
     display: flex;
     flex-direction: column;
 }
-.section-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }
-.foto {
-    width: 50px;
-    margin: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+
+ul li {
+    font-size: 1.1rem;
+    margin: 5px 0;
 }
+
 .proyectos {
     width: 40%;
     padding: 10px;
-    border: 1px solid #b35bd6;
     border-radius: 8px;
-    background-color: #2b2a3d;
 }
+
 .projects {
     display: flex;
     justify-content: center;
     margin-top: 2em;
 }
+
 .projects a {
     margin: 0 10px;
     transition: transform 0.2s;
     border-radius: 8px;
 }
+
 .projects img {
     width: 100%;
     max-width: 5em;
-    justify-content: space-between;
 }
+
 .projects a:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
-.contact{
+
+.foto {
+    width: 100%;
+    max-width: 3em;
+}
+
+.contact {
     margin-bottom: 2em;
 }
+
 .contact a {
     margin: 0 10px;
     transition: transform 0.2s;
     border-radius: 8px;
 }
+
 .contact a:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
-.foto{
-    width: 100%;
-    max-width: 3em;
-}
-@media screen and (max-width: 37.5em) { 
+
+@media screen and (max-width: 576px) { 
+    #banner {
+        width: 100%;
+    }
     .otros { 
-        width: 100%; 
-        max-width: 100%; 
         display: block; 
-        overflow-x: auto; 
     } 
     .izquierda, .proyectos, .contact { 
         width: 100%; 
-        max-width: 100%; 
         display: block; 
     } 
-    .tecnologias{
-        margin-bottom: 2em;
+    .tecnologias {
+        margin-bottom: 3em;
+    }
+    .proyectos {
+        margin-top: 3em;
     }
     .projects a {
         margin-bottom: 3em;
     }
+}
+
+/* Modo oscuro */
+body.dark {
+    background-color: #1c1b29;
+    color: #f3e6f5;
+}
+
+body.dark #banner {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+body.dark h1 {
+    color: #d26ac2;
+}
+
+body.dark .proyectos {
+    border: 1px solid #b35bd6;
+    background-color: #2b2a3d;
+}
+
+body.dark ul li {
+    color: #d5b6e0;
+}
+
+body.dark .section-title {
+    color: #b35bd6;
+}
+
+/* Modo claro */
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.light #banner {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.light h1 {
+    color: #d26ac2;
+}
+
+body.light .proyectos {
+    border: 1px solid #d26ac2;
+    background-color: #ffffff;
+}
+
+body.light ul li {
+    color: #1c1b29;
+}
+
+body.light .section-title {
+    color: #b35bd6;
+}
+
+/* Switch */
+.switch-container {
+    position:absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Iconos */
+.icon {
+    position: absolute;
+    width: 20px;
+    height: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.4s;
+}
+
+.sun {
+    left: 10px;
+}
+
+.moon {
+    right: 10px;
+    opacity: 0;
+}
+
+input:checked ~ .slider .sun {
+    opacity: 0;
+}
+
+input:checked ~ .slider .moon {
+    opacity: 1;
 }
