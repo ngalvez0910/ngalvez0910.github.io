@@ -8,13 +8,18 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body class="cuerpo dark">
-    <div class="container text-center">
-        
-        <div id="banner">
-            <img src="./imgs/bannerLinkedin.png" alt="Banner" class="img-fluid mb-4">
-        </div>
-
-        <div class="switch-container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <a class="navbar-brand" href="#">Natalia González</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#technologies">Tecnologías</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+            </ul>
             <label class="switch">
                 <input type="checkbox" id="toggleButton" onchange="toggleDarkMode()" checked>
                 <span class="slider round">
@@ -22,7 +27,14 @@
                     <img src="imgs/luna.png" class="icon moon" alt="Luna">
                 </span>
             </label>
-        </div>        
+        </div> 
+    </nav>
+
+    <div class="container text-center">
+        
+        <div id="banner">
+            <img src="./imgs/bannerLinkedin.png" alt="Banner" class="img-fluid mb-4">
+        </div>
 
         <h1>¡Hola, soy Natalia González! ☀️</h1>
 
@@ -94,6 +106,8 @@
                 <img class="foto" src="./imgs/cv.png" alt="CV" style="max-width: 3em;">
             </a>
         </div>
+
+        <figure><embed src="https://wakatime.com/share/@4c9403d6-eb71-4570-960c-ea8c0e83ac2a/1cf25e54-9aba-4fdf-bd82-c48c2719a935.svg"></embed></figure>
     </div>
 
     <script>

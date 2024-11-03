@@ -4,6 +4,19 @@
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+.navbar {
+    display: flex;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-link {
+    color: #f3e6f5 !important;
+}
+
+.navbar .nav-link:hover {
+    color: #d26ac2 !important;
+}
+
 #banner {
     margin: 20px auto;
 }
@@ -249,4 +262,18 @@ input:checked ~ .slider .sun {
 
 input:checked ~ .slider .moon {
     opacity: 1;
+}
+
+figure {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+embed {
+    width: 100%;
+    max-width: 25em;
+    height: auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
