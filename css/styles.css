@@ -6,7 +6,8 @@
 
 .navbar {
     display: flex;
-    transition: background-color 0.3s ease;
+    background-color: #1c1b29;
+    transition: 0.3s ease;
 }
 
 .navbar .nav-link {
