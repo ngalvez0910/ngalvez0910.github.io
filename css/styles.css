@@ -278,3 +278,16 @@ embed {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(210, 106, 194, 0.6);
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(45, 0, 51);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d26ac2;
+}
