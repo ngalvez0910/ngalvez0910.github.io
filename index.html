@@ -8,6 +8,12 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body class="cuerpo dark">
+    <div id="loader" class="loader">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Cargando...</span>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <a class="navbar-brand" href="#">Natalia González</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,7 +107,7 @@
             <a href="https://github.com/ngalvez0910" class="mx-2">
                 <img class="foto" src="./imgs/github.png" alt="GitHub" style="max-width: 3em;">
             </a>
-            <a href="https://www.linkedin.com/in/natalia-gonz%C3%A9lez-%C3%A1lvarez-83ba53303/" class="mx-2">
+            <a href="https://www.linkedin.com/in/natalia-gonz%C3%A1lez-%C3%A1lvarez-83ba53303/" class="mx-2">
                 <img class="foto" src="./imgs/linkedin.png" alt="LinkedIn" style="max-width: 3em;">
             </a>
             <a href="mailto:nagonal2004@gmail.com" class="mx-2">
@@ -122,10 +128,13 @@
             document.getElementById("toggleButton").checked = document.body.classList.contains("dark");
         }
 
-        // Establecer el estado del toggle al cargar la página
         document.addEventListener("DOMContentLoaded", function() {
             const isDarkMode = document.body.classList.contains("dark");
             document.getElementById("toggleButton").checked = isDarkMode;
+        });
+
+        window.addEventListener("load", function () {
+            document.getElementById("loader").style.display = "none";
         });
     </script>
 
