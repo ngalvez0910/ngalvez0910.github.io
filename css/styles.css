@@ -56,9 +56,16 @@ ul li {
     margin: 5px 0;
 }
 
+.d-flexTecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
 .foto {
+    max-width: 70px;
     width: 100%;
-    max-width: 3em;
 }
 
 .contact {
