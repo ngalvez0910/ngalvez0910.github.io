@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Natalia González</title>
+    <title>Web de Natalia</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body class="cuerpo dark">
@@ -21,188 +20,195 @@
         <p>Cargando...</p>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <a class="navbar-brand" href="#">Natalia González</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#sobremi">Sobre mí</a></li>
-                <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#technologies">Tecnologías</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-            </ul>
-            <label class="switch">
-                <input type="checkbox" id="toggleButton" onchange="toggleDarkMode()" checked>
-                <span class="slider round">
-                    <img id="sunIcon" src="imgs/sol.png" class="icon sun" alt="Sol">
-                    <img id="moonIcon" src="imgs/luna.png" class="icon moon" alt="Luna">
-                </span>
-            </label>            
-        </div> 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Natalia</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#sobremi">Sobre mí</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#technologies">Tecnologías</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                </ul>
+                <div class="form-check form-switch ml-lg-3 d-flex align-items-center">
+                    <input class="form-check-input" type="checkbox" id="toggleButton" onchange="toggleDarkMode()" checked>
+                    <label class="form-check-label ml-2" for="toggleButton">
+                        <i id="sunIcon" class="fas fa-sun icon sun"></i>
+                        <i id="moonIcon" class="fas fa-moon icon moon"></i>
+                    </label>
+                </div>
+            </div> 
+        </div>
     </nav>
 
-    <div class="container text-center">
-        
-        <div id="banner">
-            <a href="https://github.com/ngalvez0910" class="d-block">
-                <img src="./imgs/bannerLinkedin.png" alt="Banner" class="img-fluid mb-4">
+    <main class="container text-center mt-5 pt-5">
+        <section id="hero" class="mb-5">
+            <a href="https://github.com/ngalvez0910" target="_blank" class="d-block">
+                <img src="./imgs/bannerLinkedin.png" alt="Banner" class="img-fluid hero-banner">
             </a>
-        </div>
+            <h1>¡Hola, soy Natalia! <span class="emoji">☀️</span></h1>
+        </section>
 
-        <h1>¡Hola, soy Natalia González! ☀️</h1>
-
-        <div class="d-flex justify-content-center align-items-center mb-4" id="sobremi">
-            <div class="col-md-4">
-                <p class="text-left ml-3">Soy una estudiante de desarrollo de aplicaciones web💻. Me encanta sumergirme en el mundo de la tecnología y utilizar mis habilidades para crear experiencias interactivas en línea.</p>
+        <section id="sobremi" class="row align-items-center justify-content-center my-5 py-5">
+            <div class="col-md-4 text-left">
+                <p class="lead">Soy una estudiante de desarrollo de aplicaciones web💻. Me encanta sumergirme en el mundo de la tecnología y utilizar mis habilidades para crear experiencias interactivas en línea.</p>
             </div>
             <div class="col-md-4">
-                <img id="octocat" src="./imgs/octocat.png" alt="Octocat" class="img-fluid" style="max-width: 10em;">
+                <img id="octocat" src="./imgs/octocat.png" alt="Octocat" class="img-fluid my-3">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 text-left">
                 <h2 class="section-title">🎵 Artistas que escucho</h2>
-                <ul class="list-unstyled">
-                    <li>Chase Atlantic💫</li>
-                    <li>Mahmood🏆</li>
-                    <li>Arctic Monkeys🕶️</li>
-                    <li>Camila Cabello💋</li>
+                <ul class="list-unstyled artist-list">
+                    <li>Chase Atlantic<span class="emoji">💫</span></li>
+                    <li>Mahmood<span class="emoji">🏆</span></li>
+                    <li>Arctic Monkeys<span class="emoji">🕶️</span></li>
+                    <li>Camila Cabello<span class="emoji">💋</span></li>
                 </ul>
             </div>
-        </div>
+        </section>
 
-        <h2 class="section-title" id="technologies">💻 Tecnologías que uso</h2>
-        <div class="d-flexTecnologias flex-wrap justify-content-center">
-            <img class="foto" src="./imgs/github.png" alt="GitHub">
-            <img class="foto" src="./imgs/gitkraken.png" alt="GitKraken">
-            <img class="foto" src="./imgs/git.png" alt="Git">
-            <img class="foto" src="./imgs/dockerLogo.png" alt="Docker">
-            <br>
-            <img class="foto" src="./imgs/kotlin.png" alt="Kotlin">
-            <img class="foto" src="./imgs/java.png" alt="Java">
-            <img class="foto" src="./imgs/csharp.png" alt="C#">
-            <img class="foto" src="./imgs/netCore.png" alt=".NET Core">
-            <img class="foto" src="./imgs/springboot.png" alt="Spring Boot">
-            <img class="foto" src="./imgs/postman.svg" alt="Postman">
-            <br>
-            <img class="foto" src="./imgs/mysql.png" alt="MySQL">
-            <img class="foto" src="./imgs/sqlite.png" alt="SQLite">
-            <img class="foto" src="./imgs/postgres.png" alt="PostgreSQL">
-            <img class="foto" src="./imgs/mariadb.svg" alt="MariaDB">
-            <img class="foto" src="./imgs/redis.webp" alt="Redis">
-            <img class="foto" src="./imgs/mongo.svg" alt="Mongo">
-            <br>
-            <img class="foto" src="./imgs/html.png" alt="HTML">
-            <img class="foto" src="./imgs/css.png" alt="CSS">
-            <img class="foto" src="./imgs/bootstrap.png" alt="Bootstrap">
-            <img class="foto" src="./imgs/javascript.png" alt="JavaScript">
-            <img class="foto" src="./imgs/angular.png" alt="Angular">
-        </div>
+        <section id="technologies" class="my-5 py-5">
+            <h2 class="section-title">💻 Tecnologías que uso</h2>
+            <div class="d-flexTecnologias flex-wrap justify-content-center">
+                <img class="tech-icon" src="./imgs/github.png" alt="GitHub">
+                <img class="tech-icon" src="./imgs/gitkraken.png" alt="GitKraken">
+                <img class="tech-icon" src="./imgs/git.png" alt="Git">
+                <img class="tech-icon" src="./imgs/dockerLogo.png" alt="Docker">
+                <img class="tech-icon" src="./imgs/kotlin.png" alt="Kotlin">
+                <img class="tech-icon" src="./imgs/java.png" alt="Java">
+                <img class="tech-icon" src="./imgs/csharp.png" alt="C#">
+                <img class="tech-icon" src="./imgs/netCore.png" alt=".NET Core">
+                <img class="tech-icon" src="./imgs/springboot.png" alt="Spring Boot">
+                <img class="tech-icon" src="./imgs/postman.svg" alt="Postman">
+                <img class="tech-icon" src="./imgs/mysql.png" alt="MySQL">
+                <img class="tech-icon" src="./imgs/sqlite.png" alt="SQLite">
+                <img class="tech-icon" src="./imgs/postgres.png" alt="PostgreSQL">
+                <img class="tech-icon" src="./imgs/mariadb.svg" alt="MariaDB">
+                <img class="tech-icon" src="./imgs/redis.webp" alt="Redis">
+                <img class="tech-icon" src="./imgs/mongo.svg" alt="Mongo">
+                <img class="tech-icon" src="./imgs/html.png" alt="HTML">
+                <img class="tech-icon" src="./imgs/css.png" alt="CSS">
+                <img class="tech-icon" src="./imgs/bootstrap.png" alt="Bootstrap">
+                <img class="tech-icon" src="./imgs/javascript.png" alt="JavaScript">
+                <img class="tech-icon" src="./imgs/angular.png" alt="Angular">
+            </div>
+        </section>
 
-        <h2 class="section-title mt-4" id="proyectos">👩‍💻 Proyectos</h2>
-        <div class="sliderProyectos">
-            <div class="slide-track">
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/Banco-Clientes" class="d-block">
-                            <img src="./imgs/banco.png" alt="Banco Clientes" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de clientes bancarios<br>
-                                Java
-                            </p>
+        <section id="proyectos" class="my-5 py-5">
+            <h2 class="section-title">👩‍💻 Proyectos</h2>
+            <div class="sliderProyectos">
+                <div class="slide-track">
+                    <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank" class="d-block">
+                                <img src="./imgs/banco.png" alt="Banco Clientes" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de clientes bancarios<br>
+                                    Java
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/DawFilms-Project" class="d-block">
-                            <img src="./imgs/dawfilms.png" alt="DawFilms" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de cine<br>
-                                Kotlin
-                            </p>
+                    <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank" class="d-block">
+                                <img src="./imgs/dawfilms.png" alt="DawFilms" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de cine<br>
+                                    Kotlin
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/vives-bank" class="d-block">
-                            <img src="./imgs/vivesBank.png" alt="VivesBank" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de Banco<br>
-                                Springboot<br>
-                                API Rest
-                            </p>
+                    <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank" class="d-block">
+                                <img src="./imgs/vivesBank.png" alt="VivesBank" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de Banco<br>
+                                    Springboot<br>
+                                    API Rest
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/Banco-Clientes" class="d-block">
-                            <img src="./imgs/banco.png" alt="Banco Clientes" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de clientes bancarios<br>
-                                Java
-                            </p>
+                     <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank" class="d-block">
+                                <img src="./imgs/banco.png" alt="Banco Clientes" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de clientes bancarios<br>
+                                    Java
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/DawFilms-Project" class="d-block">
-                            <img src="./imgs/dawfilms.png" alt="DawFilms" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de cine<br>
-                                Kotlin
-                            </p>
+                    <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank" class="d-block">
+                                <img src="./imgs/dawfilms.png" alt="DawFilms" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de cine<br>
+                                    Kotlin
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="slide">
-                    <div class="card text-center custom-card">
-                        <a href="https://github.com/ngalvez0910/vives-bank" class="d-block">
-                            <img src="./imgs/vivesBank.png" alt="VivesBank" class="card-img-top img-fluid">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text">
-                                Gestión de Banco<br>
-                                Springboot<br>
-                                API Rest
-                            </p>
+                    <div class="slide">
+                        <div class="card custom-card">
+                            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank" class="d-block">
+                                <img src="./imgs/vivesBank.png" alt="VivesBank" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Gestión de Banco<br>
+                                    Springboot<br>
+                                    API Rest
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <h2 class="section-title" id="contact">📩 Contacto</h2>
-        <p>Para contactar conmigo, puedes hacerlo a través de:</p>
-        <div class="contact d-flex justify-content-center mb-4">
-            <a href="https://github.com/ngalvez0910" class="mx-2">
-                <img class="foto" src="./imgs/github.png" alt="GitHub" style="max-width: 3em;">
-            </a>
-            <a href="https://www.linkedin.com/in/natalia-gonz%C3%A1lez-%C3%A1lvarez-83ba53303/" class="mx-2">
-                <img class="foto" src="./imgs/linkedin.png" alt="LinkedIn" style="max-width: 3em;">
-            </a>
-            <a href="mailto:nagonal2004@gmail.com" class="mx-2">
-                <img class="foto" src="./imgs/email.png" alt="Email" style="max-width: 3em;">
-            </a>
-        </div>
+        <section id="contact" class="my-5 py-5">
+            <h2 class="section-title">📩 Contacto</h2>
+            <p>Para contactar conmigo, puedes hacerlo a través de:</p>
+            <div class="contact-icons d-flex justify-content-center mb-4">
+                <a href="https://github.com/ngalvez0910" target="_blank" class="mx-3 social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/natalia-gonz%C3%A1lez-%C3%A1lvarez-83ba53303/" target="_blank" class="mx-3 social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:nagonal2004@gmail.com" class="mx-3 social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            <figure>
+                <embed src="https://wakatime.com/share/@4c9403d6-eb71-4570-960c-ea8c0e83ac2a/1cf25e54-9aba-4fdf-bd82-c48c2719a935.svg"></embed>
+            </figure>
+        </section>
+    </main>
 
-        <figure><embed src="https://wakatime.com/share/@4c9403d6-eb71-4570-960c-ea8c0e83ac2a/1cf25e54-9aba-4fdf-bd82-c48c2719a935.svg"></embed></figure>
-    </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleDarkMode() {
             document.body.classList.toggle("light");
@@ -221,13 +227,19 @@
         }
 
         window.addEventListener("load", function () {
+            // Asegúrate de que el estado inicial del toggle refleje el modo oscuro si está checked
+            if (document.getElementById("toggleButton").checked) {
+                document.getElementById("sunIcon").style.display = "none";
+                document.getElementById("moonIcon").style.display = "inline";
+            } else {
+                document.getElementById("sunIcon").style.display = "inline";
+                document.getElementById("moonIcon").style.display = "none";
+            }
+
             setTimeout(function() {
                 document.getElementById("splash").style.animation = "fadeOut 1s forwards";
             }, 3000);
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
