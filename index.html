@@ -40,7 +40,7 @@
                         <i id="moonIcon" class="fas fa-moon icon moon"></i>
                     </label>
                 </div>
-            </div> 
+            </div>
         </div>
     </nav>
 
@@ -52,23 +52,54 @@
             <h1>¡Hola, soy Natalia! <span class="emoji">☀️</span></h1>
         </section>
 
-        <section id="sobremi" class="row align-items-center justify-content-center my-5 py-5">
-            <div class="col-md-4 text-left">
-                <p class="lead">Soy una estudiante de desarrollo de aplicaciones web💻. Me encanta sumergirme en el mundo de la tecnología y utilizar mis habilidades para crear experiencias interactivas en línea.</p>
-            </div>
-            <div class="col-md-4">
+        <section id="sobremi" class="my-5 py-5">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 text-left d-flex flex-column align-items-center">
                 <img id="octocat" src="./imgs/octocat.png" alt="Octocat" class="img-fluid my-3">
-            </div>
-            <div class="col-md-4 text-left">
-                <h2 class="section-title">🎵 Artistas que escucho</h2>
-                <ul class="list-unstyled artist-list">
-                    <li>Chase Atlantic<span class="emoji">💫</span></li>
-                    <li>Mahmood<span class="emoji">🏆</span></li>
-                    <li>Arctic Monkeys<span class="emoji">🕶️</span></li>
-                    <li>Camila Cabello<span class="emoji">💋</span></li>
-                </ul>
+                </div>
+                <div class="col-md-6 text-left d-flex flex-column align-items-center p-5">
+                    <p class="lead">Soy una desarrolladora de aplicaciones web💻. Me encanta sumergirme en el mundo de la tecnología y utilizar mis habilidades para crear experiencias interactivas en línea.</p>
+                </div>
             </div>
         </section>
+
+        <div class="col-md-6 text-left">
+            <h2 class="section-title text-center">Mi Playlist <span class="emoji">🎶</span></h2>
+            <div class="spotify-playlist-container">
+                <a href="https://open.spotify.com/intl-es/track/2VyaGJJI8dOiv36F8vHZIL?si=bda9fb7038804583" target="_blank" class="playlist-item">
+                    <div class="playlist-icon"><i class="fas fa-play"></i></div>
+                    <div class="playlist-info">
+                        <span class="playlist-song-name">Slow Down</span>
+                        <span class="playlist-artist-name">Chase Atlantic</span>
+                    </div>
+                    <div class="playlist-duration">3:32</div>
+                </a>
+                <a href="https://open.spotify.com/intl-es/track/26SAg6zRb3JpoyEXmcXxe0?si=f952bed011fd4539" target="_blank" class="playlist-item">
+                    <div class="playlist-icon"><i class="fas fa-play"></i></div>
+                    <div class="playlist-info">
+                        <span class="playlist-song-name">Que la Detengan</span>
+                        <span class="playlist-artist-name">Sofía Martín</span>
+                    </div>
+                    <div class="playlist-duration">2:23</div>
+                </a>
+                <a href="https://open.spotify.com/intl-es/track/24UStI5AYA7g5ufFDh3LH0?si=9d264cbb748e4804" target="_blank" class="playlist-item">
+                    <div class="playlist-icon"><i class="fas fa-play"></i></div>
+                    <div class="playlist-info">
+                        <span class="playlist-song-name">Por la boca vive el pez</span>
+                        <span class="playlist-artist-name">Fito y Fitipaldis</span>
+                    </div>
+                    <div class="playlist-duration">4:29</div>
+                </a>
+                <a href="https://open.spotify.com/intl-es/track/2TCUMmklsJTLWHnoU4mSQ4?si=adb01b8201c84550" target="_blank" class="playlist-item">
+                    <div class="playlist-icon"><i class="fas fa-play"></i></div>
+                    <div class="playlist-info">
+                        <span class="playlist-song-name">6 de febrero</span>
+                        <span class="playlist-artist-name">Aitana</span>
+                    </div>
+                    <div class="playlist-duration">2:55</div>
+                </a>
+            </div>
+        </div>
 
         <section id="technologies" class="my-5 py-5">
             <h2 class="section-title">💻 Tecnologías que uso</h2>
@@ -83,6 +114,8 @@
                 <img class="tech-icon" src="./imgs/netCore.png" alt=".NET Core">
                 <img class="tech-icon" src="./imgs/springboot.png" alt="Spring Boot">
                 <img class="tech-icon" src="./imgs/postman.svg" alt="Postman">
+                <img class="tech-icon" src="./imgs/php.png" alt="PHP">
+                <img class="tech-icon" src="./imgs/laravel.png" alt="Laravel">
                 <img class="tech-icon" src="./imgs/mysql.png" alt="MySQL">
                 <img class="tech-icon" src="./imgs/sqlite.png" alt="SQLite">
                 <img class="tech-icon" src="./imgs/postgres.png" alt="PostgreSQL">
@@ -94,6 +127,7 @@
                 <img class="tech-icon" src="./imgs/bootstrap.png" alt="Bootstrap">
                 <img class="tech-icon" src="./imgs/javascript.png" alt="JavaScript">
                 <img class="tech-icon" src="./imgs/angular.png" alt="Angular">
+                <img class="tech-icon" src="./imgs/vue.png" alt="Vue">
             </div>
         </section>
 
@@ -141,7 +175,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="slide">
+                    <div class="slide">
                         <div class="card custom-card">
                             <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank" class="d-block">
                                 <img src="./imgs/banco.png" alt="Banco Clientes" class="card-img-top">
@@ -227,7 +261,6 @@
         }
 
         window.addEventListener("load", function () {
-            // Asegúrate de que el estado inicial del toggle refleje el modo oscuro si está checked
             if (document.getElementById("toggleButton").checked) {
                 document.getElementById("sunIcon").style.display = "none";
                 document.getElementById("moonIcon").style.display = "inline";

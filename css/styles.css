@@ -146,10 +146,10 @@ body.light .navbar .nav-link::after {
 }
 
 .form-check-input {
-    width: 38px; /* Ancho del switch */
-    height: 20px; /* Alto del switch */
+    width: 38px;
+    height: 20px;
     border-radius: 20px;
-    background-color: #ccc; /* Color de fondo cuando está apagado */
+    background-color: #ccc;
     transition: background-color .4s;
     outline: none;
     position: relative;
@@ -157,13 +157,13 @@ body.light .navbar .nav-link::after {
 }
 
 .form-check-input:checked {
-    background-color: var(--pink); /* Color de fondo cuando está encendido */
+    background-color: var(--pink);
 }
 
 .form-check-input::before {
     content: '';
     position: absolute;
-    width: 16px; /* Tamaño del círculo */
+    width: 16px;
     height: 16px;
     border-radius: 50%;
     background-color: var(--white);
@@ -173,7 +173,7 @@ body.light .navbar .nav-link::after {
 }
 
 .form-check-input:checked::before {
-    transform: translateX(18px); /* Mover el círculo a la derecha */
+    transform: translateX(18px);
 }
 
 .form-check-label .icon {
@@ -183,12 +183,12 @@ body.light .navbar .nav-link::after {
 }
 
 .form-check-label .sun {
-    color: #f39c12; /* Color para el sol */
+    color: #f39c12;
 }
 
 .form-check-label .moon {
-    color: #f1c40f; /* Color para la luna */
-    opacity: 0; /* Oculto por defecto en modo oscuro (checked) */
+    color: #f1c40f;
+    opacity: 0;
 }
 
 .form-check-input:checked ~ .form-check-label .sun {
@@ -201,29 +201,29 @@ body.light .navbar .nav-link::after {
 
 /* Hero Section (Banner y Título) */
 #hero {
-    padding-top: 80px; /* Espacio para la barra de navegación fija */
+    padding-top: 80px;
 }
 
 .hero-banner {
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra para el banner */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease;
 }
 
 .hero-banner:hover {
-    transform: translateY(-5px); /* Pequeño efecto al pasar el mouse */
+    transform: translateY(-5px);
 }
 
 h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-top: 30px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra al texto */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .emoji {
     display: inline-block;
-    animation: bounce 1s infinite alternate; /* Animación para los emojis */
+    animation: bounce 1s infinite alternate;
 }
 
 @keyframes bounce {
@@ -234,7 +234,7 @@ h1 {
 /* Sección Sobre Mí */
 #sobremi {
     padding: 60px 0;
-    background-color: rgba(232, 156, 179, 0.05); /* Un sutil fondo rosa */
+    background-color: rgba(232, 156, 179, 0.05);
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -242,32 +242,101 @@ h1 {
 #sobremi .lead {
     font-size: 1.3rem;
     line-height: 1.8;
+    text-align: left; 
 }
 
 #octocat {
-    max-width: 150px; /* Tamaño un poco más grande */
-    border-radius: 50%; /* Octocat redondo */
+    max-width: 250px;
+    border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
 #octocat:hover {
-    transform: scale(1.1) rotate(5deg); /* Efecto al pasar el mouse */
+    transform: scale(1.1) rotate(5deg);
 }
 
-.artist-list li {
-    font-size: 1.2rem;
+/* Estilos para la nueva playlist */
+.spotify-playlist-container {
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+body.light .spotify-playlist-container {
+    background-color: var(--white);
+    border: 1px solid var(--pink);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
     margin-bottom: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
     color: var(--light-gray);
-    position: relative;
-    padding-left: 20px;
+    border: 1px solid transparent;
 }
 
-.artist-list li::before {
-    content: '🎶'; /* Icono de nota musical */
-    position: absolute;
-    left: 0;
-    color: var(--pink);
+body.light .playlist-item {
+    color: var(--dark-gray);
+    border: 1px solid var(--light-gray);
 }
+
+.playlist-item:hover {
+    background-color: rgba(232, 156, 179, 0.2);
+    text-decoration: none;
+    color: var(--white);
+}
+
+body.light .playlist-item:hover {
+    background-color: rgba(232, 156, 179, 0.2);
+    color: var(--dark-gray);
+}
+
+.playlist-icon {
+    font-size: 1.2rem;
+    color: var(--pink);
+    margin-right: 15px;
+}
+
+.playlist-item:hover .playlist-icon {
+    color: var(--dark-pink);
+}
+
+.playlist-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.playlist-song-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.playlist-artist-name {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+}
+
+body.light .playlist-artist-name {
+    color: var(--dark-gray);
+}
+
+.playlist-duration {
+    font-size: 0.9rem;
+    color: var(--light-gray);
+}
+
+body.light .playlist-duration {
+    color: var(--dark-gray);
+}
+
 
 /* Secciones generales */
 .section-title {
@@ -297,67 +366,67 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px; /* Mayor espacio entre íconos */
+    gap: 25px;
     padding: 30px;
     background-color: rgba(232, 156, 179, 0.03);
     border-radius: 15px;
 }
 
-.tech-icon { /* Renombrado de .foto para mayor claridad */
-    max-width: 80px; /* Íconos un poco más grandes */
+.tech-icon {
+    max-width: 80px;
     width: 100%;
     height: auto;
     object-fit: contain;
-    filter: grayscale(80%); /* Íconos ligeramente desaturados */
+    filter: grayscale(80%);
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .tech-icon:hover {
-    filter: grayscale(0%); /* Color completo al pasar el mouse */
-    transform: translateY(-8px) scale(1.1); /* Efecto flotante y escala */
+    filter: grayscale(0%);
+    transform: translateY(-8px) scale(1.1);
 }
 
 /* Slider de Proyectos */
 .sliderProyectos {
-    height: 300px; /* Mayor altura para las tarjetas */
+    height: 300px;
     margin: auto;
     overflow: hidden;
     position: relative;
-    width: 80%; /* Más ancho */
+    width: 80%;
     padding: 20px 0;
 }
 
 .slide-track {
     display: flex;
-    animation: scroll 30s linear infinite; /* Velocidad de scroll ajustada */
-    width: fit-content; /* Ajustar ancho al contenido */
+    animation: scroll 30s linear infinite;
+    width: fit-content;
 }
 
 .slide {
-    flex-shrink: 0; /* Evita que los elementos se contraigan */
-    margin-right: 2rem; /* Espacio entre las tarjetas */
+    flex-shrink: 0;
+    margin-right: 2rem;
 }
 
 .custom-card {
-    width: 18rem; /* Ancho de tarjeta fijo */
-    height: 100%; /* Ocupar la altura disponible */
+    width: 18rem;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    overflow: hidden; /* Asegura que la imagen no se salga */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .custom-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 12px 25px rgba(232, 156, 179, 0.4); /* Sombra rosa al pasar el mouse */
+    box-shadow: 0px 12px 25px rgba(232, 156, 179, 0.4);
 }
 
 .custom-card img {
-    max-height: 150px; /* Ajustar altura de la imagen */
-    object-fit: cover; /* Ajuste para cubrir el espacio */
+    max-height: 150px;
+    object-fit: cover;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -373,15 +442,14 @@ h1 {
 
 .custom-card .card-text {
     font-size: 1rem;
-    color: inherit; /* Heredar color del tema */
+    color: inherit;
 }
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-25% * 2)); } /* Ajuste para el número de slides originales */
+    100% { transform: translateX(calc(-25% * 2)); }
 }
 
-/* Para detener el scroll al pasar el mouse */
 .sliderProyectos:hover .slide-track {
     animation-play-state: paused;
 }
@@ -392,14 +460,14 @@ h1 {
 }
 
 .social-icon {
-    font-size: 3rem; /* Iconos más grandes */
+    font-size: 3rem;
     color: var(--pink);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icon:hover {
-    color: var(--dark-pink); /* Color más oscuro al pasar el mouse */
-    transform: scale(1.2); /* Efecto de crecimiento */
+    color: var(--dark-pink);
+    transform: scale(1.2);
 }
 
 figure {
@@ -410,9 +478,9 @@ figure {
 
 embed {
     width: 100%;
-    max-width: 30em; /* Embed más grande */
+    max-width: 30em;
     height: auto;
-    border: 1px solid var(--pink); /* Borde rosa */
+    border: 1px solid var(--pink);
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(232, 156, 179, 0.5);
     transition: transform 0.3s ease;
@@ -429,7 +497,7 @@ embed:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--black); /* Fondo negro */
+    background-color: var(--black);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -448,12 +516,12 @@ embed:hover {
 }
 
 .bar {
-    width: 25px; /* Barras un poco más grandes */
-    height: 60px; /* Altura inicial */
+    width: 25px;
+    height: 60px;
     margin: 0 8px;
     background-color: var(--pink);
     animation: grow 1.5s ease-in-out infinite;
-    border-radius: 5px; /* Bordes redondeados para las barras */
+    border-radius: 5px;
 }
 
 .bar:nth-child(1) { animation-delay: 0s; }
@@ -462,7 +530,7 @@ embed:hover {
 
 @keyframes grow {
     0%, 100% { height: 60px; transform: translateY(0); }
-    50% { height: 90px; transform: translateY(-15px); } /* Efecto de rebote */
+    50% { height: 90px; transform: translateY(-15px); }
 }
 
 @keyframes fadeIn {
@@ -471,14 +539,14 @@ embed:hover {
 }
 
 h3 {
-    font-size: 3rem; /* Título más grande */
+    font-size: 3rem;
     font-weight: bold;
     margin-top: 20px;
     color: var(--pink);
 }
 
 p {
-    font-size: 1.4rem; /* Texto más grande */
+    font-size: 1.4rem;
     margin-top: 10px;
     opacity: 0.9;
     font-style: italic;
@@ -486,7 +554,7 @@ p {
 
 @keyframes fadeOut {
     0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; } /* Ocultar completamente */
+    100% { opacity: 0; visibility: hidden; }
 }
 
 /* Media Queries para Responsividad */
@@ -499,12 +567,22 @@ p {
         font-size: 2rem;
     }
 
-    #sobremi {
-        flex-direction: column;
+    #sobremi .row {
+        align-items: center;
     }
 
-    #octocat {
-        margin: 20px 0;
+    #sobremi .col-md-6:first-child {
+        text-align: left;
+        display: flex;
+        justify-content: center;
+    }
+
+    #sobremi .col-md-6:last-child {
+        text-align: left;
+    }
+
+    .octocat-image {
+        margin: 0;
     }
 
     .d-flexTecnologias {
@@ -517,12 +595,12 @@ p {
     }
 
     .sliderProyectos {
-        width: 95%; /* Más ancho en móviles */
+        width: 95%;
         height: 280px;
     }
 
     .custom-card {
-        width: 15rem; /* Ajuste para pantallas más pequeñas */
+        width: 15rem;
     }
 
     .social-icon {
@@ -531,6 +609,15 @@ p {
 
     embed {
         max-width: 90%;
+    }
+
+    .playlist-item {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .playlist-info {
+        text-align: left;
     }
 }
 
@@ -555,10 +642,6 @@ p {
         font-size: 1rem;
     }
 
-    .artist-list li {
-        font-size: 1rem;
-    }
-
     .tech-icon {
         max-width: 50px;
     }
@@ -569,7 +652,7 @@ p {
 
     .custom-card {
         width: 12rem;
-        height: 200px; /* Altura ajustada */
+        height: 200px;
     }
 
     .custom-card img {
@@ -590,5 +673,17 @@ p {
 
     p {
         font-size: 1rem;
+    }
+
+    .playlist-item {
+        padding: 8px 10px;
+    }
+
+    .playlist-song-name {
+        font-size: 1rem;
+    }
+
+    .playlist-artist-name, .playlist-duration {
+        font-size: 0.8rem;
     }
 }
