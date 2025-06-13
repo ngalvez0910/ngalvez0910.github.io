@@ -566,22 +566,12 @@ p {
         font-size: 2rem;
     }
 
-    #sobremi .row {
-        align-items: center;
+    #sobremi .col-md-6.d-flex.justify-content-center {
+        margin-bottom: 30px;
     }
 
-    #sobremi .col-md-6:first-child {
-        text-align: left;
-        display: flex;
-        justify-content: center;
-    }
-
-    #sobremi .col-md-6:last-child {
-        text-align: left;
-    }
-
-    .octocat-image {
-        margin: 0;
+    #sobremi .col-md-6.text-center.text-md-left.p-5 {
+        text-align: center !important;
     }
 
     .d-flexTecnologias {
