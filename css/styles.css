@@ -99,7 +99,6 @@ body.light .navbar-brand:hover {
     color: var(--white) !important;
 }
 
-
 .navbar .nav-link {
     color: var(--light-gray) !important;
     font-weight: 500;
@@ -180,14 +179,15 @@ body.light .navbar .nav-link::after {
     font-size: 1.2rem;
     margin-left: 8px;
     transition: opacity 0.4s;
+    color: var(--white) !important;
 }
 
 .form-check-label .sun {
-    color: #f39c12;
+    color: var(--white) !important;
 }
 
 .form-check-label .moon {
-    color: #f1c40f;
+    color: var(--white) !important;
     opacity: 0;
 }
 
