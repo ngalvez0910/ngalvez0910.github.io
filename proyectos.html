@@ -3,153 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web de Natalia</title>
+    <title>Proyectos - Natalia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/proyectos.styles.css">
 </head>
-<body class="cuerpo dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<body class="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">Natalia</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-3">
                     <li class="nav-item"><a class="nav-link" href="index.html#sobremi">Sobre mí</a></li>
-                    <li class="nav-item"><a class="nav-link" href="proyectos.html">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="proyectos.html">Proyectos</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#technologies">Tecnologías</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contacto</a></li>
                 </ul>
-                <div class="form-check form-switch d-flex align-items-center">
-                    <input class="form-check-input" type="checkbox" id="toggleButton" onchange="toggleDarkMode()" checked>
-                    <label class="form-check-label ms-2" for="toggleButton">
-                        <i id="sunIcon" class="fas fa-sun icon sun"></i>
-                        <i id="moonIcon" class="fas fa-moon icon moon"></i>
-                    </label>
+                <div class="theme-toggle" onclick="toggleDarkMode()">
+                    <i id="themeIcon" class="fas fa-moon"></i>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="titulo text-center mt-5 pt-5">
-        <h2 class="section-title">Mis Proyectos <span class="emoji">🔍</span></h2>
-        <p>Aquí encontrarás algunos de mis proyectos.</p>
+    <div class="page-header">
+        <div class="container">
+            <h1>Mis Proyectos <span>🚀</span></h1>
+            <p>Explora mi trabajo y las tecnologías que utilizo</p>
+        </div>
     </div>
-    
-    <main class="container mt-5 pt-5">
-        <div class="card custom-card-horizontal mb-4 shadow-sm border-0">
+
+    <main class="container projects-section">
+        <!-- Proyecto 1: Banco Clientes -->
+        <div class="project-card">
             <div class="row g-0 align-items-center">
-                <div class="col-3 col-md-2 p-3 text-center">
-                    <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank">
-                        <img src="./imgs/banco.png" alt="Banco Clientes" class="img-fluid rounded project-icon">
-                    </a>
+                <div class="col-md-3 col-lg-2">
+                    <div class="project-icon-container">
+                        <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank">
+                            <img src="./imgs/banco.png" alt="Banco Clientes" class="project-icon">
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="col-9 col-md-10">
-                    <div class="card-body d-flex flex-column justify-content-center py-3">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="card-title h5 mb-0" style="color: var(--pink); font-weight: 600;">
-                                Gestión de clientes bancarios
-                            </h3>
-                        </div>
-                        <p class="card-text mb-3" style="font-size: 0.95rem; opacity: 0.9;">
-                            Servicio bancario donde se registran a los clientes con sus respectivos usuarios, cuentas, tarjetas y movimientos. Se implementan diferentes técnicas de programación para garantizar la integridad y robustez del sistema, además de aplicar los principios SOLID.
-                            <br><br>
-                            Tecnologías: Java, PostgreSQL, SQLite, JUnit, Mockito, TestContainers, Hikari, Retrofit, Dagger, Git, Gradle, WebFlux
+                <div class="col-md-9 col-lg-10">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-university"></i> Gestión de Clientes Bancarios
+                        </h3>
+                        <p class="project-description">
+                            Servicio bancario completo donde se registran clientes con sus respectivos usuarios, cuentas, tarjetas y movimientos. Implementa diferentes técnicas de programación para garantizar la integridad y robustez del sistema, aplicando los principios SOLID para un código mantenible y escalable.
                         </p>
-                        <div>
-                            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank" class="btn btn-repo">
-                                Ver Repositorio
-                            </a>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQLite</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> JUnit</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> Mockito</span>
+                            <span class="tech-badge"><i class="fas fa-docker"></i> TestContainers</span>
+                            <span class="tech-badge">Hikari</span>
+                            <span class="tech-badge">Retrofit</span>
+                            <span class="tech-badge">Dagger</span>
+                            <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
+                            <span class="tech-badge">Gradle</span>
+                            <span class="tech-badge">WebFlux</span>
                         </div>
+                        <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank" class="btn-repo">
+                            <i class="fab fa-github"></i> Ver Repositorio
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card custom-card-horizontal mb-4 shadow-sm border-0">
+
+        <!-- Proyecto 2: DawFilms -->
+        <div class="project-card">
             <div class="row g-0 align-items-center">
-                <div class="col-3 col-md-2 p-3 text-center">
-                    <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank">
-                        <img src="./imgs/dawfilms.png" alt="DawFilms" class="img-fluid rounded project-icon">
-                    </a>
+                <div class="col-md-3 col-lg-2">
+                    <div class="project-icon-container">
+                        <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank">
+                            <img src="./imgs/dawfilms.png" alt="DawFilms" class="project-icon">
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="col-9 col-md-10">
-                    <div class="card-body d-flex flex-column justify-content-center py-3">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="card-title h5 mb-0" style="color: var(--pink); font-weight: 600;">
-                                Gestión de cine
-                            </h3>
-                        </div>
-                        <p class="card-text mb-3" style="font-size: 0.95rem; opacity: 0.9;">
-                            Aplicación de cine con interfaces gráficas, implementando diferentes técnicas de programación para garantizar la integridad y robustez del sistema.
-                            <br><br>
-                            Tecnologías: Kotlin, JavaFX, SQLite, JUnit, Mockito
+                <div class="col-md-9 col-lg-10">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-film"></i> DawFilms - Gestión de Cine
+                        </h3>
+                        <p class="project-description">
+                            Aplicación integral de gestión de cine con interfaces gráficas intuitivas. Desarrollada con Kotlin y JavaFX, implementa patrones de diseño y buenas prácticas de programación para crear un sistema robusto y fácil de mantener. Incluye gestión de películas, sesiones y ventas de entradas.
                         </p>
-                        <div>
-                            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank" class="btn btn-repo">
-                                Ver Repositorio
-                            </a>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fas fa-code"></i> Kotlin</span>
+                            <span class="tech-badge">JavaFX</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> SQLite</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> JUnit</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> Mockito</span>
                         </div>
+                        <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank" class="btn-repo">
+                            <i class="fab fa-github"></i> Ver Repositorio
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card custom-card-horizontal mb-4 shadow-sm border-0">
+
+        <!-- Proyecto 3: VivesBank -->
+        <div class="project-card">
             <div class="row g-0 align-items-center">
-                <div class="col-3 col-md-2 p-3 text-center">
-                    <a href="https://github.com/ngalvez0910/vives-bank" target="_blank">
-                        <img src="./imgs/vivesBank.png" alt="VivesBank" class="img-fluid rounded project-icon">
-                    </a>
+                <div class="col-md-3 col-lg-2">
+                    <div class="project-icon-container">
+                        <a href="https://github.com/ngalvez0910/vives-bank" target="_blank">
+                            <img src="./imgs/vivesBank.png" alt="VivesBank" class="project-icon">
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="col-9 col-md-10">
-                    <div class="card-body d-flex flex-column justify-content-center py-3">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="card-title h5 mb-0" style="color: var(--pink); font-weight: 600;">
-                                Gestión de Banco
-                            </h3>
-                        </div>
-                        <p class="card-text mb-3" style="font-size: 0.95rem; opacity: 0.9;">
-                            Servicio bancario donde se registran a los clientes con sus respectivos usuarios, cuentas, tarjetas y movimientos. Se implementan diferentes técnicas de programación para garantizar la integridad y robustez del sistema, además de aplicar los principios SOLID.
-                            <br><br>
-                            Tecnologías: Java, Springboot, API Rest, Docker, PostgreSQL, JUnit, Mockito, Swagger, MongoDB
+                <div class="col-md-9 col-lg-10">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-coins"></i> VivesBank - Sistema Bancario Completo
+                        </h3>
+                        <p class="project-description">
+                            Sistema bancario empresarial desarrollado con Spring Boot, implementando una API REST completa y escalable. Incluye gestión de clientes, cuentas, tarjetas y movimientos con arquitectura hexagonal. Utiliza Docker para containerización y múltiples bases de datos para diferentes necesidades del sistema.
                         </p>
-                        <div>
-                            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank" class="btn btn-repo">
-                                Ver Repositorio
-                            </a>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fab fa-java"></i> Java</span>
+                            <span class="tech-badge"><i class="fas fa-leaf"></i> Spring Boot</span>
+                            <span class="tech-badge">API REST</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> MongoDB</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> JUnit</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> Mockito</span>
+                            <span class="tech-badge">Swagger</span>
                         </div>
+                        <a href="https://github.com/ngalvez0910/vives-bank" target="_blank" class="btn-repo">
+                            <i class="fab fa-github"></i> Ver Repositorio
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card custom-card-horizontal mb-4 shadow-sm border-0">
+
+        <!-- Proyecto 4: Waravel -->
+        <div class="project-card">
             <div class="row g-0 align-items-center">
-                <div class="col-3 col-md-2 p-3 text-center">
-                    <a href="https://loantech-oficial.onrender.com" target="_blank">
-                        <img src="./imgs/loantech.png" alt="loantech" class="img-fluid rounded project-icon">
-                    </a>
+                <div class="col-md-3 col-lg-2">
+                    <div class="project-icon-container">
+                        <a href="https://github.com/ngalvez0910/Wallapop-Laravel" target="_blank">
+                            <img src="./imgs/waravel.png" alt="Waravel" class="project-icon">
+                        </a>
+                    </div>
                 </div>
-                
-                <div class="col-9 col-md-10">
-                    <div class="card-body d-flex flex-column justify-content-center py-3">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="card-title h5 mb-0" style="color: var(--pink); font-weight: 600;">
-                                Préstamo de Ordenadores - LoanTech (TFG)
-                            </h3>
-                        </div>
-                        <p class="card-text mb-3" style="font-size: 0.95rem; opacity: 0.9;">
-                            LoanTech es un sistema de gestión integral para el préstamo de equipos informáticos. Permite a instituciones educativas gestionar de manera eficiente el inventario de ordenadores y controlar los préstamos a usuarios.
-                            <br><br>     
-                            Tecnologías: Kotlin, Springboot, API Rest, Vue, PostgreSQL, JUnit, MockK, Docker, JWT
+                <div class="col-md-9 col-lg-10">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-shopping-bag"></i> Waravel - Wallapop Clon con Laravel
+                        </h3>
+                        <p class="project-description">
+                            Plataforma web desarrollada en Laravel donde los usuarios pueden comprar y vender productos de segunda mano. La aplicación cuenta con roles de usuario y administrador, categorización de productos, gestión de pagos y devoluciones, notificaciones y un sistema completo de comentarios y valoraciones.
                         </p>
-                        <div>
-                            <a href="https://github.com/ngalvez0910/PrestamoOrdenadores-TFG" target="_blank" class="btn btn-repo">
-                                Ver Repositorio
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fab fa-php"></i> PHP</span>
+                            <span class="tech-badge"><i class="fab fa-laravel"></i> Laravel</span>
+                            <span class="tech-badge">API REST</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-memory"></i> Redis</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> PHPUnit</span>
+                            <span class="tech-badge">Blade</span>
+                        </div>
+                        <a href="https://github.com/ngalvez0910/Wallapop-Laravel" target="_blank" class="btn-repo">
+                            <i class="fab fa-github"></i> Ver Repositorio
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proyecto 5: LoanTech (TFG) -->
+        <div class="project-card">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-3 col-lg-2">
+                    <div class="project-icon-container">
+                        <a href="https://loantech-oficial.onrender.com" target="_blank">
+                            <img src="./imgs/loantech.png" alt="LoanTech" class="project-icon">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-10">
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-laptop"></i> LoanTech - Préstamo de Ordenadores (TFG)
+                        </h3>
+                        <p class="project-description">
+                            Sistema de gestión integral para el préstamo de equipos informáticos desarrollado como Trabajo de Fin de Grado. Permite a instituciones educativas gestionar eficientemente el inventario de ordenadores y controlar los préstamos a usuarios. Implementa autenticación JWT, API REST con Kotlin y Spring Boot, y frontend moderno con Vue.js.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fas fa-code"></i> Kotlin</span>
+                            <span class="tech-badge"><i class="fas fa-leaf"></i> Spring Boot</span>
+                            <span class="tech-badge">API REST</span>
+                            <span class="tech-badge"><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+                            <span class="tech-badge"><i class="fas fa-vial"></i> JUnit</span>
+                            <span class="tech-badge">MockK</span>
+                            <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-badge"><i class="fas fa-key"></i> JWT</span>
+                        </div>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="https://github.com/ngalvez0910/PrestamoOrdenadores-TFG" target="_blank" class="btn-repo">
+                                <i class="fab fa-github"></i> Ver Repositorio
+                                <i class="fas fa-arrow-right"></i>
                             </a>
+                            <a href="https://loantech-oficial.onrender.com" target="_blank" class="btn-repo" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="stats-bar">
+                            <div class="stat-item">
+                                <div class="stat-value"><i class="fas fa-trophy"></i></div>
+                                <div class="stat-label">Proyecto TFG</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value"><i class="fas fa-rocket"></i></div>
+                                <div class="stat-label">En Producción</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value"><i class="fas fa-shield-alt"></i></div>
+                                <div class="stat-label">JWT Security</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,25 +246,53 @@
         </div>
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function toggleDarkMode() {
-            document.body.classList.toggle("light");
-            document.body.classList.toggle("dark");
-
-            const sunIcon = document.getElementById("sunIcon");
-            const moonIcon = document.getElementById("moonIcon");
-
-            if (document.getElementById("toggleButton").checked) {
-                sunIcon.style.display = "none";
-                moonIcon.style.display = "inline";
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            body.classList.toggle('light');
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('light')) {
+                icon.className = 'fas fa-sun';
             } else {
-                sunIcon.style.display = "inline";
-                moonIcon.style.display = "none";
+                icon.className = 'fas fa-moon';
             }
         }
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
