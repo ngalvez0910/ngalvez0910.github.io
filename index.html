@@ -1,303 +1,1362 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natalia - Desarrolladora Web</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #efefef;
+      --bg-2: #f7f7f7;
+      --panel: rgba(255, 255, 255, 0.78);
+      --panel-strong: rgba(255, 255, 255, 0.92);
+      --line: #161616;
+      --line-soft: #5e5e5e;
+      --shadow: rgba(0, 0, 0, 0.10);
+      --shadow-strong: rgba(0, 0, 0, 0.16);
+      --text: #111111;
+      --muted: #666666;
+      --white: #ffffff;
+      --gray: #dddddd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Trebuchet MS", "Verdana", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 24%),
+        linear-gradient(180deg, #f3f3f3 0%, #ececec 100%);
+        cursor: url("./icons/cursor.png") 2 2, auto;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.45;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    a, button, .desktop-icon {
+      font: inherit;
+      cursor: url("./icons/pointer.png") 8 4, pointer;
+    }
+
+    .pixel {
+      font-family: "Courier New", monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .boot-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 200;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.5), transparent 42%),
+        linear-gradient(180deg, #f2f2f2 0%, #e9e9e9 100%);
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    .boot-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .boot-card {
+      width: min(720px, 100%);
+      padding: 38px 28px;
+      border-radius: 28px;
+      text-align: center;
+      background: rgba(255,255,255,0.62);
+      border: 2px solid rgba(0,0,0,0.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .boot-card::before,
+    .boot-card::after {
+      content: "✦";
+      position: absolute;
+      color: #111;
+      opacity: 0.9;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .boot-card::before {
+      top: 16px;
+      left: 20px;
+    }
+
+    .boot-card::after {
+      right: 20px;
+      bottom: 14px;
+    }
+
+    .boot-avatar {
+      width: 118px;
+      height: 118px;
+      margin: 0 auto 18px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 2.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(232,232,232,1));
+      border: 3px solid #1a1a1a;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.08);
+    }
+
+    .boot-card h1 {
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      font-weight: 900;
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .boot-card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .boot-hint {
+      margin-top: 22px;
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      border: 2px solid rgba(0,0,0,0.12);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      animation: pulse 1.6s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateY(0); opacity: 0.92; }
+      50% { transform: translateY(-3px); opacity: 1; }
+    }
+
+    .desktop {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 26px;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .desktop.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(960px, calc(100% - 28px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.76);
+      border: 2px solid rgba(0,0,0,0.10);
+      border-radius: 22px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      z-index: 50;
+    }
+
+    .brand h1 {
+      font-size: 1rem;
+      font-weight: 900;
+    }
+
+    .brand p,
+    .clock {
+      font-size: 0.9rem;
+      color: var(--muted);
+      opacity: 0.95;
+    }
+
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 24px 18px;
+      max-width: 620px;
+      padding-top: 110px;
+    }
+
+    .desktop-icon {
+      appearance: none;
+      background: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      user-select: none;
+      padding: 10px 8px;
+      border-radius: 18px;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+
+    .desktop-icon:hover {
+      transform: translateY(-4px) scale(1.02);
+      background: rgba(255,255,255,0.35);
+    }
+
+    .desktop-icon span {
+      font-size: 0.78rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .icon-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+      transition: transform 0.18s ease;
+      display: block;
+    }
+
+    .desktop-icon:hover .icon-img,
+    .dock a:hover .icon-img,
+    .dock button:hover .icon-img {
+      transform: translateY(-2px);
+    }
+
+    .window {
+      position: fixed;
+      top: 120px;
+      left: 58%;
+      width: min(580px, calc(100% - 34px));
+      min-width: 290px;
+      display: none;
+      overflow: hidden;
+      z-index: 80;
+      color: var(--text);
+      background: var(--panel-strong);
+      border: 2px solid rgba(0,0,0,0.10);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .window.active {
+      display: block;
+      animation: popIn 0.22s ease;
+    }
+
+    .window.dragging {
+      user-select: none;
+      cursor: grabbing;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .window-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: linear-gradient(180deg, #ffffff, #ececec);
+        border-bottom: 2px solid rgba(0,0,0,0.08);
+        cursor: url("./icons/move.png") 16 16, move;
+    }
+
+    .window.dragging .window-bar {
+        cursor: url("./icons/grabbing.png") 16 16, grabbing;
+    }
+
+    .window-bar h2 {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #111;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .window-controls button {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #1d1d1d;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.08);
+    }
+
+    .close-btn { background: #111; }
+    .min-btn { background: #cfcfcf; }
+    .max-btn { background: #fff; }
+
+    .window-content {
+      padding: 22px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .window-content p,
+    .window-content ul {
+      line-height: 1.65;
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+
+    .window-content a {
+      color: #111;
+      font-weight: 800;
+      text-decoration: none;
+      border-bottom: 2px solid #111;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .tech-list span {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 10px;
+        background: #111;
+        color: white;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .project-card,
+    .song-card,
+    .skill-card {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 2px solid rgba(0,0,0,0.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .project-card h3,
+    .song-card h3,
+    .skill-card h3 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #111;
+    }
+
+    .song-list,
+    .skills-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .calendar-widget {
+      position: fixed;
+      top: 110px;
+      right: 22px;
+      width: 300px;
+      z-index: 40;
+      background: rgba(255,255,255,0.82);
+      border: 2px solid rgba(0,0,0,0.10);
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      padding: 16px 18px;
+      border-bottom: 2px solid rgba(0,0,0,0.08);
+      background: linear-gradient(180deg, #ffffff, #ececec);
+    }
+
+    .calendar-header h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .calendar-header p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .calendar-body {
+      padding: 16px;
+    }
+
+    .calendar-days,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+
+    .calendar-days {
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .calendar-cell {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      background: rgba(255,255,255,0.72);
+      border: 1.5px solid rgba(0,0,0,0.06);
+    }
+
+    .calendar-cell.empty {
+      background: transparent;
+      border: none;
+    }
+
+    .calendar-cell.today {
+      background: #111;
+      color: white;
+      font-weight: 900;
+      border-color: #111;
+    }
+
+    .calendar-note {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .dock {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 12px;
+      min-width: 320px;
+      max-width: calc(100% - 24px);
+      z-index: 60;
+      background: rgba(255,255,255,0.8);
+      border: 2px solid rgba(0,0,0,0.10);
+      border-radius: 26px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .dock a,
+    .dock button {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 2px solid rgba(0,0,0,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(234,234,234,1));
+      box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .dock a:hover,
+    .dock button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(242,242,242,1));
+    }
+
+    .dock .icon-img {
+      width: 34px;
+      height: 34px;
+      filter: none;
+    }
+
+    .player {
+      padding: 12px;
+      border: 2px solid #000;
+      background: #fff;
+      color: #000;
+      font-family: monospace;
+      cursor: url('./icons/pointer.png') 8 4, pointer;
+    }
+
+    .controls button {
+      margin-right: 6px;
+      border: 2px solid #000;
+      background: #fff;
+      padding: 4px 8px;
+      font-weight: bold;
+      box-shadow: 2px 2px 0 #000;
+      cursor: url('./icons/pointer.png') 8 4, pointer;
+    }
+
+    .controls button:active {
+      box-shadow: none;
+      transform: translate(2px, 2px);
+    }
+
+    .progress-container {
+      width: 100%;
+      height: 10px;
+      background: #000;
+      margin: 10px 0;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: #fff;
+    }
+
+    .volume input {
+      width: 100%;
+      accent-color: black;
+      cursor: url('./icons/pointer.png') 8 4, pointer;
+    }
+
+    @media (max-width: 1100px) {
+      .calendar-widget {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      html, body {
+        overflow: auto;
+      }
+
+      .desktop {
+        min-height: 100vh;
+        height: auto;
+        padding: 18px;
+      }
+
+      .icons-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 100%;
+        gap: 18px 12px;
+        padding-top: 94px;
+        padding-bottom: 120px;
+      }
+
+      .window {
+        width: calc(100% - 24px);
+        left: 12px !important;
+        top: 120px !important;
+      }
+
+      .dock {
+        min-width: auto;
+        width: calc(100% - 20px);
+        gap: 8px;
+        padding: 8px 10px;
+      }
+
+      .dock a,
+      .dock button {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 52px;
+      }
+    }
+  </style>
 </head>
-<body class="dark">
-    <div id="splash" class="splash-screen">
-        <div class="loading-container">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <h3 style="margin-top: 20px; font-weight: 600;">Bienvenido a mi página</h3>
-        <p style="color: var(--gray-text);">Cargando experiencia...</p>
+<body>
+  <section class="boot-screen" id="bootScreen">
+    <div class="boot-card">
+      <div class="boot-avatar"><img src="./icons/star.png" class="icon-img" alt="star"></div>
+      <h1 class="pixel">Natalia OS</h1>
+      <p>Welcome to my Portfolio! I hope you enjoy it!</p>
+      <div class="boot-hint pixel">Touch 'space' to enter</div>
     </div>
+  </section>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Natalia</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto me-3">
-                    <li class="nav-item"><a class="nav-link" href="index.html#sobremi">Sobre mí</a></li>
-                    <li class="nav-item"><a class="nav-link" href="proyectos.html">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#technologies">Tecnologías</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contacto</a></li>
-                </ul>
-                <div class="theme-toggle" onclick="toggleDarkMode()">
-                    <i id="themeIcon" class="fas fa-moon"></i>
-                </div>
-            </div>
+  <main class="desktop" id="desktop">
+    <header class="topbar">
+      <div class="brand">
+        <h1 class="pixel">Natalia</h1>
+        <p>Fullstack Web Developer · Creative coder</p>
+      </div>
+      <div class="clock pixel" id="clock"></div>
+    </header>
+
+    <aside class="calendar-widget">
+      <div class="calendar-header">
+        <h3 class="pixel">Calendar</h3>
+        <p id="calendarMonthLabel"></p>
+      </div>
+      <div class="calendar-body">
+        <div class="calendar-days">
+          <div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div>
         </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+        <p class="calendar-note">currently building dreamy things ✦</p>
+      </div>
+    </aside>
+
+    <section class="icons-grid">
+      <button class="desktop-icon" onclick="openWindow('octocat')">
+        <img src="./icons/photo.png" alt="octocat" class="icon-img">
+        <span class="pixel">octocat.png</span>
+      </button>
+
+      <a class="desktop-icon" href="https://www.linkedin.com/in/natalia-ga/" target="_blank" rel="noopener noreferrer">
+        <img src="./icons/linkedin.png" alt="LinkedIn" class="icon-img">
+        <span class="pixel">linkedin</span>
+      </a>
+
+      <button class="desktop-icon" onclick="openWindow('projects')">
+        <img src="./icons/folder-heart.png" alt="Projects" class="icon-img">
+        <span class="pixel">projects</span>
+      </button>
+
+      <a class="desktop-icon" href="https://mail.google.com/mail/?view=cm&fs=1&to=nagonal2004@gmail.com" target="_blank" rel="noopener noreferrer">
+        <img src="./icons/mail.png" alt="Mail" class="icon-img">
+        <span class="pixel">mail</span>
+      </a>
+
+      <button class="desktop-icon" onclick="openWindow('about')">
+        <img src="./icons/star.png" alt="Profile" class="icon-img">
+        <span class="pixel">profile</span>
+      </button>
+
+      <a class="desktop-icon" href="https://github.com/ngalvez0910" target="_blank" rel="noopener noreferrer">
+        <img src="./icons/cat.png" alt="GitHub" class="icon-img">
+        <span class="pixel">github</span>
+      </a>
+
+      <button class="desktop-icon" onclick="openWindow('cv')">
+        <img src="./icons/document.png" alt="CV" class="icon-img">
+        <span class="pixel">cv</span>
+      </button>
+
+      <button class="desktop-icon" onclick="openWindow('music')">
+        <img src="./icons/headphones.png" alt="Music" class="icon-img">
+        <span class="pixel">music.exe</span>
+      </button>
+
+      <button class="desktop-icon" onclick="openWindow('game')">
+        <img src="./icons/game.png" alt="Game" class="icon-img">
+        <span class="pixel">game.exe</span>
+      </button>
+
+      <button class="desktop-icon" onclick="openWindow('spotify')">
+        <img src="./icons/spotify.png" alt="Spotify" class="icon-img">
+        <span class="pixel">spotify.exe</span>
+      </button>
+
+      <button class="desktop-icon" onclick="openWindow('skills')">
+        <img src="./icons/code.png" alt="Code" class="icon-img">
+        <span class="pixel">skills.exe</span>
+      </button>
+    </section>
+
+    <section class="window draggable" id="projects-window" style="top: 140px; left: 52%; max-height: 70vh; overflow-y: auto;">
+  <div class="window-bar" data-drag-handle>
+    <h2 class="pixel">My Projects</h2>
+    <div class="window-controls">
+      <button class="min-btn"></button>
+      <button class="max-btn"></button>
+      <button class="close-btn" onclick="closeWindow('projects')"></button>
+    </div>
+  </div>
+
+  <div class="window-content">
+        <p>These are some of the projects I've worked on:</p>
+
+        <div class="project-list">
+
+        <article class="project-card">
+            <h3><img src="./icons/money.png" alt="Money" class="icon-img"> Banco Clientes</h3>
+            <p>
+            Complete banking system managing clients, accounts, cards and transactions. Built following SOLID principles for scalability and robustness.
+            </p>
+
+            <div class="tech-list">
+            <span>Java</span>
+            <span>PostgreSQL</span>
+            <span>SQLite</span>
+            <span>JUnit</span>
+            <span>Mockito</span>
+            <span>Docker</span>
+            </div>
+
+            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank">View Repository</a>
+        </article>
+
+        <article class="project-card">
+            <h3><img src="./icons/popcorn.png" alt="Money" class="icon-img"> DawFilms</h3>
+            <p>
+            Cinema management system with intuitive UI. Built with Kotlin and JavaFX using design patterns and clean architecture.
+            </p>
+
+            <div class="tech-list">
+            <span>Kotlin</span>
+            <span>JavaFX</span>
+            <span>SQLite</span>
+            <span>JUnit</span>
+            </div>
+
+            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank">View Repository</a>
+        </article>
+
+        <article class="project-card">
+            <h3><img src="./icons/money.png" alt="Money" class="icon-img"> VivesBank</h3>
+            <p>
+            Full banking backend with Spring Boot and REST API. Includes accounts, cards and transactions using hexagonal architecture.
+            </p>
+
+            <div class="tech-list">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>Docker</span>
+            <span>PostgreSQL</span>
+            <span>MongoDB</span>
+            </div>
+
+            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank">View Repository</a>
+        </article>
+
+        <article class="project-card">
+            <h3><img src="./icons/waravel.png" alt="Waravel" class="icon-img"> Waravel</h3>
+            <p>
+            Marketplace web app built with Laravel. Includes user roles, payments, reviews and product management.
+            </p>
+
+            <div class="tech-list">
+            <span>PHP</span>
+            <span>Laravel</span>
+            <span>PostgreSQL</span>
+            <span>Redis</span>
+            </div>
+
+            <a href="https://github.com/ngalvez0910/Wallapop-Laravel" target="_blank">View Repository</a>
+        </article>
+
+        <article class="project-card">
+            <h3><img src="./icons/code.png" alt="Code" class="icon-img"> LoanTech (TFG)</h3>
+            <p>
+            Computer loan management system for schools. Includes JWT auth, REST API and Vue frontend.
+            </p>
+
+            <div class="tech-list">
+            <span>Kotlin</span>
+            <span>Spring Boot</span>
+            <span>Vue</span>
+            <span>JWT</span>
+            <span>Docker</span>
+            </div>
+
+            <div class="project-links">
+            <a href="https://github.com/ngalvez0910/PrestamoOrdenadores-TFG" target="_blank">Repository</a>
+            <a href="https://loantech-oficial.onrender.com" target="_blank">Live Demo</a>
+            </div>
+        </article>
+
+        </div>
+    </div>
+    </section>
+
+    <section class="window draggable" id="about-window" style="top: 180px; left: 18%;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">About me</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('about')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Hi! I'm <strong>Natalia</strong>.</p>
+        <p>I'm a fullstack web developer who loves to create new and creative online experiences. Just like this one you are in right now!</p>
+        <p>I'm a huge fan of technology, art and music.</p>
+        <ul>
+          <li>Books</li>
+          <li>Sushi</li>
+          <li>Sanrio</li>
+          <li>Claude Monet's Art</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="window draggable" id="cv-window" style="top: 220px; left: 34%; max-width: 420px;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">Curriculum</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('cv')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Here you have my CV in case you want to take a look:</p>
+        <p><a href="/cv.pdf" target="_blank">Open CV</a></p>
+      </div>
+    </section>
+
+    <section class="window draggable" id="octocat-window" style="top: 160px; left: 24%; max-width: 420px;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">octocat.png</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('octocat')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <img src="./icons/octocat.png" alt="Mi octogato" style="width: 100%; border-radius: 18px; display: block; box-shadow: 0 10px 22px rgba(0,0,0,0.08); object-fit: cover; max-height: 360px;">
+      </div>
+    </section>
+
+    <section class="window draggable" id="music-window" style="top: 150px; left: 48%; max-width: 430px;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">music.exe</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('music')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <div class="player">
+          <p class="title">Now playing...</p>
+
+          <audio id="playerAudio" src="./music.mp3"></audio>
+
+          <div class="controls">
+            <button onclick="togglePlay()">▶</button>
+            <button onclick="stopAudio()">■</button>
+          </div>
+
+          <div class="progress-container" onclick="setProgress(event)">
+            <div class="progress" id="progress"></div>
+          </div>
+
+          <div class="volume">
+            🔊
+            <input type="range" min="0" max="1" step="0.01" value="0.2" onchange="setVolume(this.value)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="window draggable" id="spotify-window" style="top: 170px; left: 38%; max-width: 460px;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">spotify.exe</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('spotify')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Some songs I love listening to lately:</p>
+        <div class="song-list">
+          <article class="song-card">
+            <h3>Slow Down · Chase Atlantic</h3>
+            <a href="https://open.spotify.com/intl-es/track/2VyaGJJI8dOiv36F8vHZIL" target="_blank" rel="noopener noreferrer">Open on Spotify</a>
+          </article>
+          <article class="song-card">
+            <h3>Never Say Never · Justin Bieber, Jaden</h3>
+            <a href="https://open.spotify.com/track/5GYbkDveRD2I8M5ZJ14hWn" target="_blank" rel="noopener noreferrer">Open on Spotify</a>
+          </article>
+          <article class="song-card">
+            <h3>Que la Detengan · Sofía Martín</h3>
+            <a href="https://open.spotify.com/track/26SAg6zRb3JpoyEXmcXxe0" target="_blank" rel="noopener noreferrer">Open on Spotify</a>
+          </article>
+          <article class="song-card">
+            <h3>The Winner Takes It All · ABBA</h3>
+            <a href="https://open.spotify.com/track/3oEkrIfXfSh9zGnE7eBzSV" target="_blank" rel="noopener noreferrer">Open on Spotify</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="window draggable" id="skills-window" style="top: 210px; left: 42%; max-width: 720px; width: 100%;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">skills.exe</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('skills')"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Programming languages and technologies I work with:</p>
+        <div class="skills-list">
+            <article class="skill-card">
+                <h3>Frontend</h3>
+                <p>HTML · CSS · JavaScript · Angular · Vue · Bootstrap</p>
+            </article>
+
+            <article class="skill-card">
+                <h3>Backend</h3>
+                <p>Java · Kotlin · PHP · C# · .NET Core · Spring Boot · Laravel</p>
+            </article>
+
+            <article class="skill-card">
+                <h3>Databases</h3>
+                <p>MySQL · PostgreSQL · SQLite · MariaDB · MongoDB · Redis</p>
+            </article>
+
+            <article class="skill-card">
+                <h3>DevOps & Cloud</h3>
+                <p>Docker · AWS · AWS Sagemaker · AWS CloudWatch · AWS Athena</p>
+            </article>
+
+            <article class="skill-card">
+                <h3>Tools</h3>
+                <p>Git · GitHub · GitKraken · Postman · ContolM · ADA Console</p>
+            </article>
+
+            <article class="skill-card">
+                <h3>Data</h3>
+                <p>Pandas</p>
+            </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="window draggable" id="game-window" style="top: 170px; left: 44%; max-width: 430px;">
+      <div class="window-bar" data-drag-handle>
+        <h2 class="pixel">game.exe</h2>
+        <div class="window-controls">
+          <button class="min-btn" aria-label="Minimize"></button>
+          <button class="max-btn" aria-label="Maximize"></button>
+          <button class="close-btn" aria-label="Close" onclick="closeWindow('game'); stopstarGame(true);"></button>
+        </div>
+      </div>
+      <div class="window-content">
+        <p>Click on the stars to gain points.</p>
+        <div style="display:grid; gap:12px;">
+          <button onclick="togglestarGame()" style="border:none; border-radius:16px; padding:12px 14px; background:#111; color:white; font-weight:800;">Start</button>
+          <div id="starGame" style="display:none; padding:14px; border-radius:16px; background:rgba(255,255,255,0.76);">
+            <p style="margin-bottom:10px;"><strong>Points:</strong> <span id="score">0</span></p>
+            <div id="gameArea" style="position:relative; height:220px; overflow:hidden; border-radius:14px; background:linear-gradient(180deg, #ffffff, #ececec); border:2px solid rgba(0,0,0,0.08);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="dock">
+      <button onclick="openWindow('about')" aria-label="Open About Me">
+        <img src="./icons/star.png" alt="Profile" class="icon-img">
+      </button>
+
+      <button onclick="openWindow('projects')" aria-label="Open Projects">
+        <img src="./icons/folder-heart.png" alt="Projects" class="icon-img">
+      </button>
+
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nagonal2004@gmail.com" target="_blank" aria-label="Send Email">
+        <img src="./icons/mail.png" alt="Mail" class="icon-img">
+      </a>
+
+      <a href="https://github.com/ngalvez0910" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub">
+        <img src="./icons/cat.png" alt="GitHub" class="icon-img">
+      </a>
+
+      <button onclick="logoutToBoot()" aria-label="Close session">
+        <img src="./icons/logout.png" alt="Logout" class="icon-img">
+      </button>
     </nav>
+  </main>
 
-    <main class="container">
-        <section id="hero">
-            <h1 class="title">¡Hola, soy Natalia! <span class="emoji">✨</span></h1>
-        </section>
+  <audio id="clickSound" preload="auto">
+    <source src="./click.mp3" type="audio/mp3">
+  </audio>
 
-        <section id="sobremi" class="fade-in">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-6 text-center">
-                    <img src="./imgs/octocat.png" alt="Octocat" class="octocat-image">
-                </div>
-                <div class="col-md-6">
-                    <p class="lead">Soy una desarrolladora de aplicaciones web 💻 apasionada por crear experiencias digitales únicas. Me encanta sumergirme en el mundo de la tecnología y transformar ideas en realidad a través del código.</p>
-                </div>
-            </div>
-        </section>
+  <script>
+const bootScreen = document.getElementById('bootScreen');
+const desktop = document.getElementById('desktop');
+let highestZ = 100;
 
-        <section class="text-center fade-in">
-            <h2 class="section-title">Mi Playlist <span class="emoji">🎶</span></h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="spotify-playlist-container">
-                        <a href="https://open.spotify.com/intl-es/track/2VyaGJJI8dOiv36F8vHZIL" target="_blank" class="playlist-item">
-                            <div class="playlist-icon"><i class="fas fa-play"></i></div>
-                            <div class="playlist-info">
-                                <span class="playlist-song-name">Slow Down</span>
-                                <span class="playlist-artist-name">Chase Atlantic</span>
-                            </div>
-                            <div class="playlist-duration">3:32</div>
-                        </a>
-                        <a href="https://open.spotify.com/intl-es/track/26SAg6zRb3JpoyEXmcXxe0" target="_blank" class="playlist-item">
-                            <div class="playlist-icon"><i class="fas fa-play"></i></div>
-                            <div class="playlist-info">
-                                <span class="playlist-song-name">Que la Detengan</span>
-                                <span class="playlist-artist-name">Sofía Martín</span>
-                            </div>
-                            <div class="playlist-duration">2:23</div>
-                        </a>
-                        <a href="https://open.spotify.com/intl-es/track/24UStI5AYA7g5ufFDh3LH0" target="_blank" class="playlist-item">
-                            <div class="playlist-icon"><i class="fas fa-play"></i></div>
-                            <div class="playlist-info">
-                                <span class="playlist-song-name">Por la boca vive el pez</span>
-                                <span class="playlist-artist-name">Fito y Fitipaldis</span>
-                            </div>
-                            <div class="playlist-duration">4:29</div>
-                        </a>
-                        <a href="https://open.spotify.com/intl-es/track/2TCUMmklsJTLWHnoU4mSQ4" target="_blank" class="playlist-item">
-                            <div class="playlist-icon"><i class="fas fa-play"></i></div>
-                            <div class="playlist-info">
-                                <span class="playlist-song-name">6 de febrero</span>
-                                <span class="playlist-artist-name">Aitana</span>
-                            </div>
-                            <div class="playlist-duration">2:55</div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* -------------------- CLICK SOUND GLOBAL -------------------- */
 
-        <section id="technologies" class="text-center fade-in">
-            <h2 class="section-title">Tecnologías <span class="emoji">💻</span></h2>
-            <div class="tech-grid">
-                <div class="tech-item"><img class="tech-icon" src="./imgs/github.png" alt="GitHub"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/gitkraken.png" alt="GitKraken"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/git.png" alt="Git"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/dockerLogo.png" alt="Docker"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/aws.png" alt="AWS"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/kotlin.png" alt="Kotlin"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/java.png" alt="Java"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/csharp.png" alt="C#"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/netCore.png" alt=".NET Core"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/springboot.png" alt="Spring Boot"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/postman.svg" alt="Postman"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/php.png" alt="PHP"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/laravel.png" alt="Laravel"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/mysql.png" alt="MySQL"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/sqlite.png" alt="SQLite"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/postgres.png" alt="PostgreSQL"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/mariadb.svg" alt="MariaDB"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/redis.webp" alt="Redis"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/mongo.svg" alt="Mongo"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/pandas.ico" alt="Pandas"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/html.png" alt="HTML"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/css.png" alt="CSS"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/bootstrap.png" alt="Bootstrap"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/javascript.png" alt="JavaScript"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/angular.png" alt="Angular"></div>
-                <div class="tech-item"><img class="tech-icon" src="./imgs/vue.png" alt="Vue"></div>
-            </div>
-        </section>
+let isDraggingGlobal = false;
 
-        <section id="proyectos" class="text-center fade-in">
-            <h2 class="section-title">Mis Proyectos <span class="emoji">🚀</span></h2>
-            <div class="projects-container">
-                <div class="slide-track">
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank">
-                                <img src="./imgs/banco.png" alt="Banco Clientes">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de clientes bancarios<br><strong>Java</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank">
-                                <img src="./imgs/dawfilms.png" alt="DawFilms">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de cine<br><strong>Kotlin</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank">
-                                <img src="./imgs/vivesBank.png" alt="VivesBank">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de Banco<br><strong>Spring Boot • API Rest</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://loantech-oficial.onrender.com" target="_blank">
-                                <img src="./imgs/loantech.png" alt="LoanTech">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Préstamo de Ordenadores<br><strong>Mi TFG - LoanTech</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/Wallapop-Laravel" target="_blank">
-                                <img src="./imgs/waravel.png" alt="Waravel">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Waravel<br><strong>Laravel • API Rest</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/Banco-Clientes" target="_blank">
-                                <img src="./imgs/banco.png" alt="Banco Clientes">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de clientes bancarios<br><strong>Java</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/DawFilms-Project" target="_blank">
-                                <img src="./imgs/dawfilms.png" alt="DawFilms">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de cine<br><strong>Kotlin</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/vives-bank" target="_blank">
-                                <img src="./imgs/vivesBank.png" alt="VivesBank">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Gestión de Banco<br><strong>Spring Boot • API Rest</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://loantech-oficial.onrender.com" target="_blank">
-                                <img src="./imgs/loantech.png" alt="LoanTech">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Préstamo de Ordenadores<br><strong>Mi TFG - LoanTech</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="card custom-card">
-                            <a href="https://github.com/ngalvez0910/Wallapop-Laravel" target="_blank">
-                                <img src="./imgs/waravel.png" alt="Waravel">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-text">Waravel<br><strong>Laravel • API Rest</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+function playClickSound() {
+  const sound = document.getElementById('clickSound');
+  if (!sound) return;
 
-        <section id="contact" class="text-center fade-in" style="padding-bottom: 100px;">
-            <h2 class="section-title">Contacto <span class="emoji">📧</span></h2>
-            <div class="glass-card p-5 mx-auto" style="max-width: 700px;">
-                <p class="mb-4" style="font-size: 1.1rem;">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-                <div class="d-flex justify-content-center gap-4 flex-wrap">
-                    <a href="https://github.com/ngalvez0910" target="_blank" class="social-circle github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/natalia-ga/" target="_blank" class="social-circle linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:nagonal2004@gmail.com" class="social-circle email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+  sound.currentTime = 0;
+  sound.volume = 0.2;
+  sound.play().catch(() => {});
+}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function toggleDarkMode() {
-            const body = document.body;
-            const icon = document.getElementById('themeIcon');
-            
-            body.classList.toggle('light');
-            body.classList.toggle('dark');
-            
-            if (body.classList.contains('light')) {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
-        }
+document.addEventListener('mousedown', () => isDraggingGlobal = false);
+document.addEventListener('mousemove', () => isDraggingGlobal = true);
 
-        // Intersection Observer para animaciones
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+document.addEventListener('click', () => {
+  if (isDraggingGlobal) return;
+  playClickSound();
+});
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+/* -------------------- BOOT / DESKTOP -------------------- */
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function enterDesktop() {
+  bootScreen.classList.add('hidden');
+  desktop.classList.add('active');
+}
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+function logoutToBoot() {
+  document.querySelectorAll('.window.active').forEach((win) => win.classList.remove('active'));
+
+  const player = document.getElementById('playerAudio');
+  if (player) {
+    player.pause();
+    player.currentTime = 0;
+  }
+
+  stopstarGame(true);
+  desktop.classList.remove('active');
+  bootScreen.classList.remove('hidden');
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
+    event.preventDefault();
+    enterDesktop();
+  }
+});
+
+bootScreen.addEventListener('click', enterDesktop);
+
+/* -------------------- WINDOWS -------------------- */
+
+function openWindow(name) {
+  const win = document.getElementById(name + '-window');
+  if (!win) return;
+
+  win.classList.add('active');
+  highestZ += 1;
+  win.style.zIndex = highestZ;
+
+  if (name === 'game') {
+    const panel = document.getElementById('starGame');
+    if (panel) panel.style.display = 'none';
+  }
+}
+
+function closeWindow(name) {
+  const win = document.getElementById(name + '-window');
+  if (win) win.classList.remove('active');
+}
+
+/* -------------------- CLOCK + CALENDAR -------------------- */
+
+function updateClock() {
+  const now = new Date();
+  const time = now.toLocaleTimeString('es-ES', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  const date = now.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short'
+  });
+
+  document.getElementById('clock').textContent = `${date} · ${time}`;
+}
+
+function renderCalendar() {
+  const grid = document.getElementById('calendarGrid');
+  const label = document.getElementById('calendarMonthLabel');
+  if (!grid || !label) return;
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const today = now.getDate();
+
+  label.textContent = now.toLocaleDateString('en-GB', {
+    month: 'long',
+    year: 'numeric'
+  });
+
+  grid.innerHTML = '';
+
+  const firstDay = new Date(year, month, 1);
+  let startDay = firstDay.getDay();
+  startDay = startDay === 0 ? 6 : startDay - 1;
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let i = 0; i < startDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'calendar-cell empty';
+    grid.appendChild(empty);
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const cell = document.createElement('div');
+    cell.className = 'calendar-cell';
+    if (day === today) cell.classList.add('today');
+    cell.textContent = day;
+    grid.appendChild(cell);
+  }
+}
+
+updateClock();
+renderCalendar();
+setInterval(updateClock, 1000);
+
+/* -------------------- GAME -------------------- */
+
+function togglestarGame() {
+  const panel = document.getElementById('starGame');
+  if (!panel) return;
+
+  if (panel.style.display === 'none' || !panel.style.display) {
+    panel.style.display = 'block';
+    startstarGame();
+  } else {
+    panel.style.display = 'none';
+    stopstarGame(true);
+  }
+}
+
+let gameInterval = null;
+let score = 0;
+
+function startstarGame() {
+  const area = document.getElementById('gameArea');
+  const scoreEl = document.getElementById('score');
+  if (!area || !scoreEl) return;
+
+  area.innerHTML = '';
+  score = 0;
+  scoreEl.textContent = score;
+
+  stopstarGame(true);
+
+  const panel = document.getElementById('starGame');
+  if (panel) panel.style.display = 'block';
+
+  gameInterval = setInterval(() => {
+    const star = document.createElement('button');
+    star.type = 'button';
+    star.style.position = 'absolute';
+    star.style.left = Math.random() * 85 + '%';
+    star.style.top = '-10px';
+    star.style.width = '28px';
+    star.style.height = '28px';
+    star.style.border = 'none';
+    star.style.background = 'url("./icons/star.png") center/contain no-repeat';
+    star.style.imageRendering = 'pixelated';
+    star.style.cursor = 'url("./icons/pointer.png") 8 4, pointer';
+
+    area.appendChild(star);
+
+    let topPos = -10;
+    const fall = setInterval(() => {
+      topPos += 3;
+      star.style.top = topPos + 'px';
+
+      if (topPos > 220) {
+        clearInterval(fall);
+        star.remove();
+      }
+    }, 30);
+
+    star.addEventListener('click', () => {
+      score++;
+      scoreEl.textContent = score;
+      clearInterval(fall);
+      star.remove();
+    });
+
+  }, 700);
+}
+
+function stopstarGame(keepPanelHidden = false) {
+  if (gameInterval) {
+    clearInterval(gameInterval);
+    gameInterval = null;
+  }
+
+  const area = document.getElementById('gameArea');
+  if (area) area.innerHTML = '';
+
+  const panel = document.getElementById('starGame');
+  if (panel && !keepPanelHidden) panel.style.display = 'none';
+}
+
+/* -------------------- DRAG WINDOWS -------------------- */
+
+document.querySelectorAll('.window').forEach((win) => {
+  const handle = win.querySelector('[data-drag-handle]');
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+
+  function startDrag(clientX, clientY) {
+    isDragging = true;
+    isDraggingGlobal = true;
+
+    highestZ++;
+    win.style.zIndex = highestZ;
+    win.classList.add('dragging');
+
+    const rect = win.getBoundingClientRect();
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+  }
+
+  function drag(clientX, clientY) {
+    if (!isDragging) return;
+
+    const maxLeft = window.innerWidth - win.offsetWidth;
+    const maxTop = window.innerHeight - win.offsetHeight;
+
+    let left = clientX - offsetX;
+    let top = clientY - offsetY;
+
+    left = Math.max(8, Math.min(left, maxLeft - 8));
+    top = Math.max(70, Math.min(top, maxTop - 8));
+
+    win.style.left = left + 'px';
+    win.style.top = top + 'px';
+  }
+
+  function endDrag() {
+    isDragging = false;
+    win.classList.remove('dragging');
+  }
+
+  handle.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
+  document.addEventListener('mousemove', (e) => drag(e.clientX, e.clientY));
+  document.addEventListener('mouseup', endDrag);
+
+  win.addEventListener('mousedown', () => {
+    highestZ++;
+    win.style.zIndex = highestZ;
+  });
+});
+
+/* -------------------- MUSIC PLAYER -------------------- */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("playerAudio");
+  const progress = document.getElementById("progress");
+
+  if (!audio) return;
+
+  audio.volume = 0.2;
+
+  function startAudioOnce() {
+    audio.play().catch(() => {});
+    document.removeEventListener("click", startAudioOnce);
+  }
+
+  let musicStarted = false;
+
+  document.addEventListener('click', () => {
+
+    const baseSound = document.getElementById('clickSound');
+    if (baseSound) {
+      const sound = baseSound.cloneNode();
+      sound.volume = 0.2;
+      sound.play().catch(() => {});
+    }
+
+    if (!musicStarted) {
+      const audio = document.getElementById("playerAudio");
+      if (audio) {
+        audio.volume = 0.2;
+        audio.play().catch(() => {});
+        musicStarted = true;
+      }
+    }
+
+  });
+
+  window.togglePlay = function () {
+    audio.paused ? audio.play() : audio.pause();
+  }
+
+  window.stopAudio = function () {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  audio.addEventListener("timeupdate", () => {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = percent + "%";
+  });
+
+  window.setProgress = function (e) {
+    const width = e.currentTarget.clientWidth;
+    const clickX = e.offsetX;
+    audio.currentTime = (clickX / width) * audio.duration;
+  }
+
+  window.setVolume = function (value) {
+    audio.volume = value;
+  }
+
+});
+</script>
 </body>
 </html>
