@@ -852,7 +852,8 @@
       </div>
       <div class="window-content">
         <p>Here you have my CV in case you want to take a look:</p>
-        <p><a href="/cv.pdf" target="_blank">Open CV</a></p>
+        <p><a href="./.bin/cv.pdf" target="_blank">Open CV (Spanish)</a></p>
+        <p><a href="./.bin/cv_EN.pdf" target="_blank">Open CV (English)</a></p>
       </div>
     </section>
 
@@ -883,7 +884,7 @@
         <div class="player">
           <p class="title">Now playing...</p>
 
-          <audio id="playerAudio" src="./music.mp3"></audio>
+          <audio id="playerAudio" src="./music.mp3" loop></audio>
 
           <div class="controls">
             <button onclick="togglePlay()">▶</button>
@@ -1033,23 +1034,21 @@ const desktop = document.getElementById('desktop');
 let highestZ = 100;
 
 /* -------------------- CLICK SOUND GLOBAL -------------------- */
-
-let isDraggingGlobal = false;
+const clickSound = document.getElementById('clickSound');
 
 function playClickSound() {
-  const sound = document.getElementById('clickSound');
-  if (!sound) return;
+  if (!clickSound) return;
 
-  sound.currentTime = 0;
-  sound.volume = 0.2;
-  sound.play().catch(() => {});
+  clickSound.currentTime = 0; 
+  clickSound.volume = 0.2;
+  
+  clickSound.play().catch(error => {
+    console.log("El audio fue bloqueado o no se encontró el archivo:", error);
+  });
 }
 
-document.addEventListener('mousedown', () => isDraggingGlobal = false);
-document.addEventListener('mousemove', () => isDraggingGlobal = true);
-
-document.addEventListener('click', () => {
-  if (isDraggingGlobal) return;
+// Escuchar el click en todo el documento
+document.addEventListener('mousedown', () => {
   playClickSound();
 });
 
@@ -1058,16 +1057,13 @@ document.addEventListener('click', () => {
 function enterDesktop() {
   bootScreen.classList.add('hidden');
   desktop.classList.add('active');
+  
+  const player = document.getElementById('playerAudio');
+  player.play().catch(() => console.log("Autoplay bloqueado hasta interacción"));
 }
 
 function logoutToBoot() {
   document.querySelectorAll('.window.active').forEach((win) => win.classList.remove('active'));
-
-  const player = document.getElementById('playerAudio');
-  if (player) {
-    player.pause();
-    player.currentTime = 0;
-  }
 
   stopstarGame(true);
   desktop.classList.remove('active');
@@ -1313,13 +1309,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let musicStarted = false;
 
   document.addEventListener('click', () => {
-
-    const baseSound = document.getElementById('clickSound');
-    if (baseSound) {
-      const sound = baseSound.cloneNode();
-      sound.volume = 0.2;
-      sound.play().catch(() => {});
-    }
 
     if (!musicStarted) {
       const audio = document.getElementById("playerAudio");
