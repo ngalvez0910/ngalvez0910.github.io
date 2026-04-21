@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -576,6 +577,17 @@
       cursor: url('./icons/pointer.png') 8 4, pointer;
     }
 
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      float: right;  
+      margin: 0 0 10px 15px; 
+      border: 3px solid #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
     @media (max-width: 1100px) {
       .calendar-widget {
         display: none;
@@ -829,6 +841,8 @@
         </div>
       </div>
       <div class="window-content">
+        <img src="./assets/profile.jpg" alt="Foto de Natalia" class="profile-pic">
+
         <p>Hi! I'm <strong>Natalia</strong> ✨</p>
 
         <p>
